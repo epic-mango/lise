@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LiSe</string>
+    <string name="navigation_drawer_open">Abir el panel de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el panel de navegación</string>
+    <string name="nav_header_title">Secuenciador en vivo</string>
+    <string name="nav_header_subtitle">Chustle</string>
+    <string name="nav_header_desc">Panel de navegación</string>
+    <string name="action_settings">Configuración</string>
+    <string name="menu_mis_secuencias">Mis secuencias</string>
+    <string name="menu_listas">Listas de reproducción</string>
+    <string name="menu_importar">Importar secuencia</string>
+    <string name="menu_dirigir">Dirigir</string>
+    <string name="menu_seguir">Seguir</string>
+    <string name="menu_exportar">Exportar secuencia</string>
+    <string name="menu_archivos">Archivos</string>
+    <string name="menu_presentacion">Presentación</string>
+</resources>
