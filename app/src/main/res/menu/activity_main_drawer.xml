@@ -9,19 +9,19 @@
         <item android:title="@string/menu_archivos">
             <menu>
             <item
-                android:id="@+id/nav_mis_secuencias"
+                android:id="@+id/nav_mnu_mis_secuencias"
                 android:icon="@drawable/ic_folder"
                 android:title="@string/menu_mis_secuencias" />
             <item
-                android:id="@+id/nav_listas"
+                android:id="@+id/nav_mnu_listas"
                 android:icon="@drawable/ic_playlist"
                 android:title="@string/menu_listas" />
             <item
-                android:id="@+id/nav_importar"
+                android:id="@+id/nav_mnu_importar"
                 android:icon="@drawable/ic_import"
                 android:title="@string/menu_importar" />
             <item
-                android:id="@+id/nav_exportar"
+                android:id="@+id/nav_mnu_exportar"
                 android:icon="@drawable/ic_export"
                 android:title="@string/menu_exportar" />
             </menu>
@@ -32,11 +32,11 @@
     <item android:title="@string/menu_presentacion">
         <menu>
             <item
-                android:id="@+id/nav_dirigir"
+                android:id="@+id/nav_mnu_dirigir"
                 android:icon="@drawable/ic_cast"
                 android:title="@string/menu_dirigir" />
             <item
-                android:id="@+id/nav_seguir"
+                android:id="@+id/nav_mnu_seguir"
                 android:icon="@drawable/ic_camera"
                 android:title="@string/menu_seguir" />
         </menu>
