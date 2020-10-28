@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
         //Navegación--------------------------------------------------------------------------------
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         final NavigationView navigationView = findViewById(R.id.nav_view);
+
         // Debes incluir cada uno de los destinos de alto nivel en esta lista
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_dst_mis_secuencias, R.id.nav_dst_listas)
                 .setDrawerLayout(drawer)
                 .build();
+
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -66,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (destino != -1) {
-
                     navController.navigate(destino);
-
                     drawer.close();
                     return true;
                 } else return false;

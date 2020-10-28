@@ -1,16 +1,16 @@
-package com.chustle.lise.ui.home;
+package com.chustle.lise.ui.mis_secuencias;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class MisSecuenciasViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public MisSecuenciasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is \"mis secuencias\" fragment");
     }
 
     public LiveData<String> getText() {

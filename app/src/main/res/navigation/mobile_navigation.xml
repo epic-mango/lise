@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_dst_mis_secuencias"
-        android:name="com.chustle.lise.ui.home.HomeFragment"
+        android:name="com.chustle.lise.ui.mis_secuencias.MisSecuenciasFragment"
         android:label="@string/menu_mis_secuencias"
         tools:layout="@layout/fragment_home" />
 
