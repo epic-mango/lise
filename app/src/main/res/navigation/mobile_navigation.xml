@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/nav_dst_listas"
-        android:name="com.chustle.lise.ui.gallery.GalleryFragment"
+        android:name="com.chustle.lise.ui.mis_listas.MisListasFragment"
         android:label="@string/menu_listas"
         tools:layout="@layout/fragment_gallery" />
 
