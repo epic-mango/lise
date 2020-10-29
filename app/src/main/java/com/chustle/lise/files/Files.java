@@ -50,10 +50,9 @@ public class Files {
                 Secuencia secuencia = gson.fromJson(br.readLine(), Secuencia.class);
 
                 //Convert to ListModel to display on the RecyclerView
-                SecuenciaListModel secuenciaListModel = new SecuenciaListModel();
-                secuenciaListModel.setNombreSecuencia(secuencia.getNombreSecuencia());
-                secuenciaListModel.setArtistaSecuencia(secuencia.getArtistaSecuencia());
-                secuenciaListModel.setRutaArchivo(file);
+                SecuenciaListModel secuenciaListModel = new SecuenciaListModel(secuencia.getNombreSecuencia(),
+                        secuencia.getArtistaSecuencia(), file);
+
 
                 listaSecuencias.add(secuenciaListModel);
 

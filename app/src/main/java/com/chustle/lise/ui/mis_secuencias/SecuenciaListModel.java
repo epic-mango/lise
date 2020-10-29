@@ -6,6 +6,12 @@ public class SecuenciaListModel {
     private String artistaSecuencia;
     private String rutaArchivo;
 
+    public SecuenciaListModel(String nombreSecuencia, String artistaSecuencia, String rutaArchivo) {
+        this.nombreSecuencia = nombreSecuencia;
+        this.artistaSecuencia = artistaSecuencia;
+        this.rutaArchivo = rutaArchivo;
+    }
+
     public String getNombreSecuencia() {
         return nombreSecuencia;
     }

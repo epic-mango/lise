@@ -4,31 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
 import com.chustle.lise.files.Files;
+import com.chustle.lise.files.models.Secuencia;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MisSecuenciasFragment extends Fragment {
 
+    Files files;
     //Interfaz de usuario---------------------------------------------------------------------------
     private RecyclerView listaSecuencias;
     private ListaSecuenciasAdapter adapterSecuencias;
     private FloatingActionButton fabNuevaSecuencia;
-
     private MisSecuenciasViewModel misSecuenciasViewModel;
-    Files files;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,8 +37,7 @@ public class MisSecuenciasFragment extends Fragment {
     }
 
 
-
-    private void inicializarComponentes(View root){
+    private void inicializarComponentes(View root) {
 
         //Lista secuencias----------------------------------------------------------------------------------------------------------------
 
@@ -53,8 +48,8 @@ public class MisSecuenciasFragment extends Fragment {
 
 
         listaSecuencias.setLayoutManager(llm);
-
-        listaSecuencias.setAdapter(new ListaSecuenciasAdapter(files.getSecuencias()));
+        final List<SecuenciaListModel> modelosListaSecuencias = files.getSecuencias();
+        listaSecuencias.setAdapter(new ListaSecuenciasAdapter(modelosListaSecuencias));
 
         //Floating Action Button Nueva Secuencia-----------------------------------------------------------------------------------------
 
@@ -62,7 +57,12 @@ public class MisSecuenciasFragment extends Fragment {
         fabNuevaSecuencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                files.crearSecuencia("Prueba","Prueba artista");
+                Secuencia secuencia = files.crearSecuencia("Prueba", "Prueba artista");
+                modelosListaSecuencias.add(new SecuenciaListModel(secuencia.getNombreSecuencia()
+                        , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia()+".json"));
+
+
+                listaSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size()-1);
             }
         });
     }
