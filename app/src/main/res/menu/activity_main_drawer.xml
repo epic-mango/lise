@@ -8,22 +8,22 @@
     <group android:checkableBehavior="single">
         <item android:title="@string/menu_archivos">
             <menu>
-            <item
-                android:id="@+id/nav_mnu_mis_secuencias"
-                android:icon="@drawable/ic_folder"
-                android:title="@string/menu_mis_secuencias" />
-            <item
-                android:id="@+id/nav_mnu_listas"
-                android:icon="@drawable/ic_playlist"
-                android:title="@string/menu_listas" />
-            <item
-                android:id="@+id/nav_mnu_importar"
-                android:icon="@drawable/ic_import"
-                android:title="@string/menu_importar" />
-            <item
-                android:id="@+id/nav_mnu_exportar"
-                android:icon="@drawable/ic_export"
-                android:title="@string/menu_exportar" />
+                <item
+                    android:id="@+id/nav_mnu_mis_secuencias"
+                    android:icon="@drawable/ic_folder"
+                    android:title="@string/menu_mis_secuencias" />
+                <item
+                    android:id="@+id/nav_mnu_listas"
+                    android:icon="@drawable/ic_playlist"
+                    android:title="@string/menu_listas" />
+                <item
+                    android:id="@+id/nav_mnu_importar"
+                    android:icon="@drawable/ic_import"
+                    android:title="@string/menu_importar" />
+                <item
+                    android:id="@+id/nav_mnu_exportar"
+                    android:icon="@drawable/ic_export"
+                    android:title="@string/menu_exportar" />
             </menu>
         </item>
 

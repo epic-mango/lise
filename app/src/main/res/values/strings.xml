@@ -14,5 +14,6 @@
     <string name="menu_exportar">Export sequence</string>
     <string name="menu_archivos">Files</string>
     <string name="menu_presentacion">Performance</string>
+    <string name="agregar_secuencia">New Sequence</string>
 
 </resources>

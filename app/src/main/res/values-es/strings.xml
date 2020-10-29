@@ -15,4 +15,5 @@
     <string name="menu_exportar">Exportar secuencia</string>
     <string name="menu_archivos">Archivos</string>
     <string name="menu_presentacion">Presentación</string>
+    <string name="agregar_secuencia">Nueva Secuencia</string>
 </resources>
