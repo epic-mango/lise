@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MisSecuenciasFragment extends Fragment {
+public class FragmentMisSecuencias extends Fragment {
 
     Files files;
     //Interfaz de usuario---------------------------------------------------------------------------
@@ -58,13 +59,22 @@ public class MisSecuenciasFragment extends Fragment {
         fabNuevaSecuencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Secuencia secuencia = files.crearSecuencia("Prueba", "Prueba artista");
 
-                modelosListaSecuencias.add(new SecuenciaListModel(secuencia.getNombreSecuencia()
-                        , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia()+".json"));
+                DialogFragment propiedadesSecuencia = new DialogFragmentPropiedadesSecuencia(new DialogFragmentPropiedadesSecuencia.PropiedadesSecuenciaListener() {
+                    @Override
+                    public void aceptar(String nombre, String artista) {
+                        Secuencia secuencia = files.crearSecuencia(nombre, artista);
+
+                        modelosListaSecuencias.add(new SecuenciaListModel(secuencia.getNombreSecuencia()
+                                , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia() + ".json"));
 
 
-                listaSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size()-1);
+                        listaSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size() - 1);
+                    }
+                }, null);
+
+
+                propiedadesSecuencia.show(getActivity().getSupportFragmentManager(), "PROPIEDADES_SECUENCIA");
             }
         });
     }

@@ -46,8 +46,8 @@ public class ListaSecuenciasAdapter extends RecyclerView.Adapter<ListaSecuencias
 
         public ViewHolder(View v) {
             super(v);
-            nombreSecuencia = (TextView) v.findViewById(R.id.txtNombreSecuencia);
-            artistaSecuencia = (TextView) v.findViewById(R.id.txtArtistaSecuencia);
+            nombreSecuencia = (TextView) v.findViewById(R.id.lblNombreSecuencia);
+            artistaSecuencia = (TextView) v.findViewById(R.id.lblArtistaSecuencia);
         }
     }
 

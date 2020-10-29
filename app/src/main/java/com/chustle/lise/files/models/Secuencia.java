@@ -1,12 +1,22 @@
 package com.chustle.lise.files.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Secuencia {
 
     private String nombreSecuencia, artistaSecuencia;
 
     private long idSecuencia;
+
+    List<PistaSecuencia> listaPistas;
+
+    public List<PistaSecuencia> getListaPistas() {
+        return listaPistas;
+    }
+
+    public void setListaPistas(List<PistaSecuencia> listaPistas) {
+        this.listaPistas = listaPistas;
+    }
 
     public String getNombreSecuencia() {
         return nombreSecuencia;

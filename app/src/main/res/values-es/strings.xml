@@ -16,4 +16,11 @@
     <string name="menu_archivos">Archivos</string>
     <string name="menu_presentacion">Presentación</string>
     <string name="agregar_secuencia">Nueva Secuencia</string>
+    <string name="propiedades_secuencia">Propeidades de la Secuencia</string>
+    <string name="nombre">Nombre</string>
+    <string name="artista">Artista</string>
+    <string name="ejemplo_nombre_secuencia">Ejemplo: Disonante</string>
+    <string name="ejemplo_artista_secuencia">Ejemplo: Paradoja Química</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

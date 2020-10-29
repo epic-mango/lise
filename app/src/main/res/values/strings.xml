@@ -16,6 +16,12 @@
     <string name="menu_presentacion">Performance</string>
     <string name="agregar_secuencia">New Sequence</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="propiedades_secuencia">Sequence Properties</string>
+    <string name="nombre">Name</string>
+    <string name="artista">Artist</string>
+    <string name="ejemplo_nombre_secuencia">Example: Halo</string>
+    <string name="ejemplo_artista_secuencia">Example: Porcupine Tree</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
 
 </resources>
