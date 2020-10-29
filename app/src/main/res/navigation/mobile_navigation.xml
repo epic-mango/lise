@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_dst_mis_secuencias">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.chustle.lise.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_dst_mis_secuencias"
+        android:name="com.chustle.lise.ui.mis_secuencias.MisSecuenciasFragment"
+        android:label="@string/menu_mis_secuencias"
+        tools:layout="@layout/fragment_mis_secuencias" />
+
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.chustle.lise.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_dst_listas"
+        android:name="com.chustle.lise.ui.mis_listas.MisListasFragment"
+        android:label="@string/menu_listas"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_dst_importar"
         android:name="com.chustle.lise.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_importar"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

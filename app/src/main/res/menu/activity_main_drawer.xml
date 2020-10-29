@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+        <item android:title="@string/menu_archivos">
+            <menu>
+                <item
+                    android:id="@+id/nav_mnu_mis_secuencias"
+                    android:icon="@drawable/ic_folder"
+                    android:title="@string/menu_mis_secuencias" />
+                <item
+                    android:id="@+id/nav_mnu_listas"
+                    android:icon="@drawable/ic_playlist"
+                    android:title="@string/menu_listas" />
+                <item
+                    android:id="@+id/nav_mnu_importar"
+                    android:icon="@drawable/ic_import"
+                    android:title="@string/menu_importar" />
+                <item
+                    android:id="@+id/nav_mnu_exportar"
+                    android:icon="@drawable/ic_export"
+                    android:title="@string/menu_exportar" />
+            </menu>
+        </item>
+
     </group>
+
+    <item android:title="@string/menu_presentacion">
+        <menu>
+            <item
+                android:id="@+id/nav_mnu_dirigir"
+                android:icon="@drawable/ic_cast"
+                android:title="@string/menu_dirigir" />
+            <item
+                android:id="@+id/nav_mnu_seguir"
+                android:icon="@drawable/ic_camera"
+                android:title="@string/menu_seguir" />
+        </menu>
+    </item>
 </menu>

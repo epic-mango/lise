@@ -1,13 +1,19 @@
 <resources>
     <string name="app_name">LiSe</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_close">Close navigation drawe</string>
+    <string name="nav_header_title">Live Sequencer</string>
+    <string name="nav_header_subtitle">Chustle</string>
+    <string name="nav_header_desc">Navigation drawer</string>
     <string name="action_settings">Settings</string>
+    <string name="menu_mis_secuencias">My sequences</string>
+    <string name="menu_listas">Playlists</string>
+    <string name="menu_importar">Import sequence</string>
+    <string name="menu_dirigir">Lead</string>
+    <string name="menu_seguir">Follow</string>
+    <string name="menu_exportar">Export sequence</string>
+    <string name="menu_archivos">Files</string>
+    <string name="menu_presentacion">Performance</string>
+    <string name="agregar_secuencia">New Sequence</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 </resources>
