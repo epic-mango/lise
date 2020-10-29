@@ -1,5 +1,7 @@
 package com.chustle.lise.files.models;
 
+import java.util.ArrayList;
+
 public class Secuencia {
 
     private String nombreSecuencia, artistaSecuencia;

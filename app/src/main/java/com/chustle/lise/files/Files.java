@@ -82,7 +82,7 @@ public class Files {
         //Create a file to save the sequence object
         File fileSecuencia = new File(FILES_DIR, now + ".json");
 
-        //El objeto Gson nos facilita convertir a JSON
+        //El objeto Gson nos facilita convertir a cadena JSON
         //Gson makes it easy to convert an Java Object to JSON String
         Gson gson = new Gson();
 
@@ -114,6 +114,5 @@ public class Files {
         }
 
         return null;
-
     }
 }

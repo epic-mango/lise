@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         final NavigationView navigationView = findViewById(R.id.nav_view);
 
         // Debes incluir cada uno de los destinos de alto nivel en esta lista
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_dst_mis_secuencias, R.id.nav_dst_listas)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_dst_mis_secuencias,
+                R.id.nav_dst_listas)
                 .setDrawerLayout(drawer)
                 .build();
 

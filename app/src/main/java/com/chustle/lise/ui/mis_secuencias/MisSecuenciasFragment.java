@@ -48,6 +48,7 @@ public class MisSecuenciasFragment extends Fragment {
 
 
         listaSecuencias.setLayoutManager(llm);
+
         final List<SecuenciaListModel> modelosListaSecuencias = files.getSecuencias();
         listaSecuencias.setAdapter(new ListaSecuenciasAdapter(modelosListaSecuencias));
 
@@ -58,6 +59,7 @@ public class MisSecuenciasFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Secuencia secuencia = files.crearSecuencia("Prueba", "Prueba artista");
+
                 modelosListaSecuencias.add(new SecuenciaListModel(secuencia.getNombreSecuencia()
                         , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia()+".json"));
 
