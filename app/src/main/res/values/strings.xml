@@ -23,5 +23,6 @@
     <string name="ejemplo_artista_secuencia">Example: Porcupine Tree</string>
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
+    <string name="campos_vacios">All the fields are required</string>
 
 </resources>

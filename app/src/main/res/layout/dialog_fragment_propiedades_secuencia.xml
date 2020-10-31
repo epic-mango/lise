@@ -4,13 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,4 +54,25 @@
         app:layout_constraintTop_toBottomOf="@+id/asdasd" />
 
 
+    <Button
+        android:id="@+id/btnCancelar_dFPropiedadesSecuencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/blanco"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:text="@string/cancelar"
+        app:layout_constraintEnd_toStartOf="@+id/btnAceptar_dFPropiedadesSecuencia"
+        app:layout_constraintTop_toBottomOf="@+id/txtArtistaSecuencia" />
+
+    <Button
+        android:id="@+id/btnAceptar_dFPropiedadesSecuencia"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blanco"
+        android:text="@string/aceptar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCancelar_dFPropiedadesSecuencia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

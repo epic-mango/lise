@@ -2,6 +2,7 @@ package com.chustle.lise.ui.mis_secuencias;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -40,7 +41,16 @@ public class FragmentSecuencia extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_secuencia, container, false);
+
+
+        View root = inflater.inflate(R.layout.fragment_secuencia, container, false);
+
+        Bundle bundle = getArguments();
+
+        String nombre = bundle.getString(SecuenciaListModel.NOMBRE_SECUENCIA);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(nombre);
+
+        return root;
     }
 }

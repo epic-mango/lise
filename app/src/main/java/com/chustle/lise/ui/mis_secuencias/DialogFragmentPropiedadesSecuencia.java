@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
     SecuenciaListModel secuencia;
 
     EditText txtNombre, txtArtista;
+    Button btnAceptar, btnCancelar;
 
     public DialogFragmentPropiedadesSecuencia(PropiedadesSecuenciaListener propiedadesSecuenciaListener, SecuenciaListModel secuencia) {
         listener = propiedadesSecuenciaListener;
@@ -37,17 +40,34 @@ public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
         txtNombre = root.findViewById(R.id.txtNombreSecuencia);
         txtArtista = root.findViewById(R.id.txtArtistaSecuencia);
 
+        btnAceptar = root.findViewById(R.id.btnAceptar_dFPropiedadesSecuencia);
+        btnCancelar = root.findViewById(R.id.btnCancelar_dFPropiedadesSecuencia);
+
         if (secuencia != null) {
             txtNombre.setText(secuencia.getNombreSecuencia());
             txtArtista.setText(secuencia.getArtistaSecuencia());
         }
 
+        builder.setCancelable(false);
+
         builder.setView(root);
 
-        builder.setPositiveButton(getResources().getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                listener.aceptar(txtNombre.getText().toString(), txtArtista.getText().toString());
+            public void onClick(View v) {
+                if (!txtNombre.getText().toString().equals("") && !txtArtista.getText().toString().equals("")) {
+                    listener.aceptar(txtNombre.getText().toString(), txtArtista.getText().toString());
+                    dismiss();
+                } else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.campos_vacios), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
 

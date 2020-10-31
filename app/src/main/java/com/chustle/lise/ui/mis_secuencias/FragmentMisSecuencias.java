@@ -1,13 +1,16 @@
 package com.chustle.lise.ui.mis_secuencias;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +28,6 @@ public class FragmentMisSecuencias extends Fragment {
     private RecyclerView listaSecuencias;
     private ListaSecuenciasAdapter adapterSecuencias;
     private FloatingActionButton fabNuevaSecuencia;
-    private MisSecuenciasViewModel misSecuenciasViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -40,7 +42,7 @@ public class FragmentMisSecuencias extends Fragment {
 
     private void inicializarComponentes(View root) {
 
-        //Lista secuencias----------------------------------------------------------------------------------------------------------------
+        //Lista secuencias--------------------------------------------------------------------------
 
         listaSecuencias = root.findViewById(R.id.listaSecuencias);
         listaSecuencias.setHasFixedSize(true);
@@ -51,9 +53,22 @@ public class FragmentMisSecuencias extends Fragment {
         listaSecuencias.setLayoutManager(llm);
 
         final List<SecuenciaListModel> modelosListaSecuencias = files.getSecuencias();
-        listaSecuencias.setAdapter(new ListaSecuenciasAdapter(modelosListaSecuencias));
+        listaSecuencias.setAdapter(new ListaSecuenciasAdapter(modelosListaSecuencias, new ListaSecuenciasAdapter.SecuenciasAdapterListener() {
+            @Override
+            public void onClic(int position) {
+                SecuenciaListModel clicada = modelosListaSecuencias.get(position);
+                Toast.makeText(getContext(), "Clicado: " + clicada.getNombreSecuencia(), Toast.LENGTH_SHORT).show();
+                navegarASecuencia(clicada);
+            }
 
-        //Floating Action Button Nueva Secuencia-----------------------------------------------------------------------------------------
+            @Override
+            public void onLongClic(int position) {
+                SecuenciaListModel clicada = modelosListaSecuencias.get(position);
+                Toast.makeText(getContext(), "Clic largo: " + clicada.getNombreSecuencia(), Toast.LENGTH_SHORT).show();
+            }
+        }));
+
+        //Floating Action Button Nueva Secuencia----------------------------------------------------
 
         fabNuevaSecuencia = root.findViewById(R.id.fabNuevaSecuencia);
         fabNuevaSecuencia.setOnClickListener(new View.OnClickListener() {
@@ -77,5 +92,16 @@ public class FragmentMisSecuencias extends Fragment {
                 propiedadesSecuencia.show(getActivity().getSupportFragmentManager(), "PROPIEDADES_SECUENCIA");
             }
         });
+    }
+
+    private void navegarASecuencia(SecuenciaListModel secuencia){
+        Bundle bundle = new Bundle();
+
+        bundle.putString(SecuenciaListModel.NOMBRE_SECUENCIA, secuencia.getNombreSecuencia());
+        bundle.putString(SecuenciaListModel.ARTISTA_SECUENCIA, secuencia.getArtistaSecuencia());
+        bundle.putString(SecuenciaListModel.ID_SECUENCIA, secuencia.getRutaArchivo());
+
+        Navigation.findNavController(getView()).navigate(R.id.nav_dst_mis_secuencias_to_nav_dst_secuencia, bundle);
+
     }
 }

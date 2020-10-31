@@ -23,4 +23,5 @@
     <string name="ejemplo_artista_secuencia">Ejemplo: Paradoja Química</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="campos_vacios">Todos los campos son obligatorios</string>
 </resources>
