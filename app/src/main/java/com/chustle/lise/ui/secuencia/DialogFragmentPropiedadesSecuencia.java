@@ -1,9 +1,10 @@
-package com.chustle.lise.ui.mis_secuencias;
+package com.chustle.lise.ui.secuencia;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +15,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.chustle.lise.R;
+import com.chustle.lise.ui.mis_secuencias.SecuenciasListModel;
 
 public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
 
     PropiedadesSecuenciaListener listener;
-    SecuenciaListModel secuencia;
+    SecuenciasListModel secuencia;
 
     EditText txtNombre, txtArtista;
     Button btnAceptar, btnCancelar;
 
-    public DialogFragmentPropiedadesSecuencia(PropiedadesSecuenciaListener propiedadesSecuenciaListener, SecuenciaListModel secuencia) {
+    public DialogFragmentPropiedadesSecuencia(PropiedadesSecuenciaListener propiedadesSecuenciaListener, SecuenciasListModel secuencia) {
         listener = propiedadesSecuenciaListener;
         this.secuencia = secuencia;
     }
@@ -75,7 +77,8 @@ public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
         return builder.create();
     }
 
+
     public interface PropiedadesSecuenciaListener {
-        public void aceptar(String nombre, String artista);
+        void aceptar(String nombre, String artista);
     }
 }

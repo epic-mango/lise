@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNuevaSecuencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/ic_add"
-        android:id="@+id/fabNuevaSecuencia"
+        android:src="@drawable/ic_add_file"
         android:tooltipText="@string/agregar_secuencia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/listaSecuencias" />

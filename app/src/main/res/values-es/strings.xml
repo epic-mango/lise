@@ -24,4 +24,7 @@
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
     <string name="campos_vacios">Todos los campos son obligatorios</string>
+    <string name="agregar_pista">Agregar pista</string>
+    <string name="guardar">Guardar</string>
+    <string name="guardar_copia">Guardar una copia</string>
 </resources>

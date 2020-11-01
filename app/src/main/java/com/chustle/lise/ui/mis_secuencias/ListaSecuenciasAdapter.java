@@ -11,30 +11,30 @@ import com.chustle.lise.R;
 
 import java.util.List;
 
-public class ListaSecuenciasAdapter extends RecyclerView.Adapter<ListaSecuenciasAdapter.ViewHolder> {
+public class ListaSecuenciasAdapter extends RecyclerView.Adapter<ListaSecuenciasAdapter.ListaSecuenciasViewHolder> {
 
 
-    private List<SecuenciaListModel> secuenciaListModelList;
+    private List<SecuenciasListModel> secuenciasListModelList;
     private SecuenciasAdapterListener listener;
 
-    public ListaSecuenciasAdapter(List<SecuenciaListModel> secuenciaListModelList, SecuenciasAdapterListener listener) {
-        this.secuenciaListModelList = secuenciaListModelList;
+    public ListaSecuenciasAdapter(List<SecuenciasListModel> secuenciasListModelList, SecuenciasAdapterListener listener) {
+        this.secuenciasListModelList = secuenciasListModelList;
         this.listener = listener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ListaSecuenciasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_element_secuencia, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v, listener);
+        ListaSecuenciasViewHolder viewHolder = new ListaSecuenciasViewHolder(v, listener);
         return viewHolder;
     }
 
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String nombreSecuencia = secuenciaListModelList.get(position).getNombreSecuencia();
-        String artistaSecuencia = secuenciaListModelList.get(position).getArtistaSecuencia();
+    public void onBindViewHolder(ListaSecuenciasViewHolder holder, int position) {
+        String nombreSecuencia = secuenciasListModelList.get(position).getNombreSecuencia();
+        String artistaSecuencia = secuenciasListModelList.get(position).getArtistaSecuencia();
 
         holder.nombreSecuencia.setText(nombreSecuencia);
         holder.artistaSecuencia.setText(artistaSecuencia);
@@ -43,21 +43,21 @@ public class ListaSecuenciasAdapter extends RecyclerView.Adapter<ListaSecuencias
 
     @Override
     public int getItemCount() {
-        return secuenciaListModelList.size();
+        return secuenciasListModelList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ListaSecuenciasViewHolder extends RecyclerView.ViewHolder{
         private TextView nombreSecuencia;
         private TextView artistaSecuencia;
 
 
 
-        public ViewHolder(View v, final SecuenciasAdapterListener listener) {
+        public ListaSecuenciasViewHolder(View v, final SecuenciasAdapterListener listener) {
             super(v);
             nombreSecuencia = (TextView) v.findViewById(R.id.lblNombreSecuencia);
             artistaSecuencia = (TextView) v.findViewById(R.id.lblArtistaSecuencia);
 
-            
+
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,8 +78,6 @@ public class ListaSecuenciasAdapter extends RecyclerView.Adapter<ListaSecuencias
 
 
     }
-
-
 
     public interface SecuenciasAdapterListener{
         void onClic(int position);

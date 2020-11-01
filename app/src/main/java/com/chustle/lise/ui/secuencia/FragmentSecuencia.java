@@ -1,22 +1,23 @@
-package com.chustle.lise.ui.mis_secuencias;
+package com.chustle.lise.ui.secuencia;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chustle.lise.R;
 import com.chustle.lise.files.models.Secuencia;
+import com.chustle.lise.ui.mis_secuencias.SecuenciasListModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSecuencia#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentSecuencia extends Fragment {
 
     public FragmentSecuencia() {
@@ -35,7 +36,7 @@ public class FragmentSecuencia extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -47,10 +48,33 @@ public class FragmentSecuencia extends Fragment {
 
         Bundle bundle = getArguments();
 
-        String nombre = bundle.getString(SecuenciaListModel.NOMBRE_SECUENCIA);
+        String nombre = bundle.getString(SecuenciasListModel.NOMBRE_SECUENCIA);
+        String artista = bundle.getString(SecuenciasListModel.ARTISTA_SECUENCIA);
+        String id = bundle.getString(SecuenciasListModel.ID_SECUENCIA);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(nombre);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(nombre + " - " + artista);
 
         return root;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.fragment_secuencia, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mnu_agregar_pista:
+
+                return  true;
+        }
+
+        return false;
+
     }
 }

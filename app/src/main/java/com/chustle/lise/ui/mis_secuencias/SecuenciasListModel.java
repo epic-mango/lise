@@ -1,6 +1,6 @@
 package com.chustle.lise.ui.mis_secuencias;
 
-public class SecuenciaListModel {
+public class SecuenciasListModel {
 
     private String nombreSecuencia;
     private String artistaSecuencia;
@@ -10,7 +10,7 @@ public class SecuenciaListModel {
     public static final String ARTISTA_SECUENCIA = "artista_secuencia";
     public static final String ID_SECUENCIA = "id_secuencia";
 
-    public SecuenciaListModel(String nombreSecuencia, String artistaSecuencia, String rutaArchivo) {
+    public SecuenciasListModel(String nombreSecuencia, String artistaSecuencia, String rutaArchivo) {
         this.nombreSecuencia = nombreSecuencia;
         this.artistaSecuencia = artistaSecuencia;
         this.rutaArchivo = rutaArchivo;
