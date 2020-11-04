@@ -43,6 +43,7 @@ public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
         btnAceptar = root.findViewById(R.id.btnAceptar_dFPropiedadesSecuencia);
         btnCancelar = root.findViewById(R.id.btnCancelar_dFPropiedadesSecuencia);
 
+        //If the sequence exists, fill the information.
         if (secuencia != null) {
             txtNombre.setText(secuencia.getNombreSecuencia());
             txtArtista.setText(secuencia.getArtistaSecuencia());
@@ -52,13 +53,19 @@ public class DialogFragmentPropiedadesSecuencia extends DialogFragment {
 
         builder.setView(root);
 
+
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Verify that all the fields are complete
                 if (!txtNombre.getText().toString().equals("") && !txtArtista.getText().toString().equals("")) {
+                    //Call the properties of sequence listener (PropiedadesSecuenciaListener)
+                    // interface to notify that the user accepted the changes
                     listener.aceptar(txtNombre.getText().toString(), txtArtista.getText().toString());
                     dismiss();
                 } else {
+
                     Toast.makeText(getContext(), getResources().getString(R.string.campos_vacios), Toast.LENGTH_SHORT).show();
                 }
             }

@@ -19,7 +19,6 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;

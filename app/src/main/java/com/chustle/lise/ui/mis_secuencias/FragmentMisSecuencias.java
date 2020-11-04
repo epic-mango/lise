@@ -47,6 +47,8 @@ public class FragmentMisSecuencias extends Fragment {
         rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {
             @Override
             public void onClic(int position) {
+
+                //Get the clicked sequence to be send to the FragmentSecuencia
                 ListModelSecuencias clicada = modelosListaSecuencias.get(position);
                 navegarASecuencia(clicada);
             }
@@ -64,20 +66,26 @@ public class FragmentMisSecuencias extends Fragment {
             @Override
             public void onClick(View v) {
 
+                //Create and show a dialog fragment to get the initial information of a sequence
                 DialogFragment propiedadesSecuencia = new DialogFragmentPropiedadesSecuencia(new DialogFragmentPropiedadesSecuencia.PropiedadesSecuenciaListener() {
+
+                    //On Accept
                     @Override
                     public void aceptar(String nombre, String artista) {
+
+                        //Create a file on the devide with the information from the dialog fragment
                         Secuencia secuencia = files.crearSecuencia(nombre, artista);
 
+                        //Add the new sequence to the list to fill the recyclerView @rVSecuencias
                         modelosListaSecuencias.add(new ListModelSecuencias(secuencia.getNombreSecuencia()
                                 , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia() + ".json"));
 
-
+                        //Nototify that a sequence has been added
                         rVSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size() - 1);
                     }
                 }, null);
 
-
+                //Show the dialog fragment
                 propiedadesSecuencia.show(getActivity().getSupportFragmentManager(), "PROPIEDADES_SECUENCIA");
             }
         });
@@ -86,10 +94,13 @@ public class FragmentMisSecuencias extends Fragment {
     private void navegarASecuencia(ListModelSecuencias secuencia) {
         Bundle bundle = new Bundle();
 
+        //Fill the extra information to the FragmentSecuencia
+
         bundle.putString(ListModelSecuencias.NOMBRE_SECUENCIA, secuencia.getNombreSecuencia());
         bundle.putString(ListModelSecuencias.ARTISTA_SECUENCIA, secuencia.getArtistaSecuencia());
         bundle.putString(ListModelSecuencias.ID_SECUENCIA, secuencia.getRutaArchivo());
 
+        //Navigate to FragmentSecuencia
         Navigation.findNavController(getView()).navigate(R.id.nav_dst_mis_secuencias_to_nav_dst_secuencia, bundle);
     }
 }

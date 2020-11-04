@@ -15,7 +15,10 @@ public class AdapterListaSecuencias extends
         RecyclerView.Adapter<AdapterListaSecuencias.ViewHolderListaSecuencias> {
 
 
+    //All the Sequences basic information
     private List<ListModelSecuencias> listModelListSecuencias;
+
+    //Listener for the events of clics
     private SecuenciasAdapterListener listener;
 
     public AdapterListaSecuencias(List<ListModelSecuencias> listModelListSecuencias,

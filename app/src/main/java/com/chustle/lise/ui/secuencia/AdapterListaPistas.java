@@ -16,7 +16,10 @@ import java.util.List;
 
 public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    //Static Object class identifiers
     public static final int CLASE_MARCADOR = 0;
+
+    //List of information for the Adapter
     private List<PistaSecuencia> listaPistas;
 
     public AdapterListaPistas(List<PistaSecuencia> listaPistas) {
@@ -27,7 +30,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-
+        //Switch between view types to inflate the rigth layout
         switch (viewType) {
             case CLASE_MARCADOR:
                 return new ViewHolderMarcadores(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
@@ -44,8 +47,11 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public int getItemViewType(int position) {
         int tipo = -1;
+
+        //Class name of the actual element
         String claseActual = listaPistas.get(position).getClass().getName();
 
+        //returning the class int identifiers
         if (claseActual.equals(Marcador.class.getName()))
             tipo = CLASE_MARCADOR;
 

@@ -60,7 +60,7 @@ public class FragmentSecuencia extends Fragment {
         String artista = bundle.getString(ListModelSecuencias.ARTISTA_SECUENCIA);
         String id = bundle.getString(ListModelSecuencias.ID_SECUENCIA);
 
-
+        //Set AppBar Title
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(nombre + " - " + artista);
 
         inicializarComponentes(root);
@@ -78,6 +78,7 @@ public class FragmentSecuencia extends Fragment {
 
         ArrayList<PistaSecuencia> listaPistas = new ArrayList<>();
 
+        //Test data
         listaPistas.add(new Marcador(1, 0, false,"Prueba"));
         listaPistas.add(new PistaSecuencia(2, 1, false));
 
