@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
+import com.chustle.lise.files.models.Marcador;
+import com.chustle.lise.files.models.PistaSecuencia;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 
@@ -67,19 +69,17 @@ public class FragmentSecuencia extends Fragment {
         return root;
     }
 
-    private void inicializarComponentes(View root){
+    private void inicializarComponentes(View root) {
         //--------------RECYCLER VIEW PISTAS----------------------------------------------------
 
         RecyclerView rVPistas = root.findViewById(R.id.recyclerViewPistas_fragmentSecuencia);
         rVPistas.setHasFixedSize(true);
         rVPistas.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<ListModelPista> listaPistas = new ArrayList<>();
-        listaPistas.add(new ListModelPista());
-        listaPistas.add(new ListModelPista());
-        listaPistas.add(new ListModelPista());
-        listaPistas.add(new ListModelPista());
-        listaPistas.add(new ListModelPista());
+        ArrayList<PistaSecuencia> listaPistas = new ArrayList<>();
+
+        listaPistas.add(new Marcador(1, 0, false,"Prueba"));
+        listaPistas.add(new PistaSecuencia(2, 1, false));
 
         rVPistas.setAdapter(new AdapterListaPistas(listaPistas));
     }

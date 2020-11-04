@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linearLayout_Cabecera"
+        android:id="@+id/linearLayoutCabecera_CardPistaMarcador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_rect"
@@ -81,7 +81,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutColumnasTabla_CardPistaMarcador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -89,7 +89,7 @@
         android:padding="6dp"
         android:visibility="gone"
         android:weightSum="12"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_Cabecera"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCabecera_CardPistaMarcador"
         tools:layout_editor_absoluteX="95dp">
 
         <ImageView
@@ -120,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutColumnasTabla_CardPistaMarcador" />
 
     <LinearLayout
         android:id="@+id/linearLayoutAgregarMarcador_CardPistaMarcador"
