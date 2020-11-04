@@ -23,10 +23,6 @@ import java.util.List;
 public class FragmentMisSecuencias extends Fragment {
 
     Files files;
-    //Interfaz de usuario---------------------------------------------------------------------------
-    private RecyclerView listaSecuencias;
-    private ListaSecuenciasAdapter adapterSecuencias;
-    private FloatingActionButton fabNuevaSecuencia;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,33 +37,29 @@ public class FragmentMisSecuencias extends Fragment {
 
     private void inicializarComponentes(View root) {
 
-        //Lista secuencias--------------------------------------------------------------------------
+        //Recycler View secuencias--------------------------------------------------------------------------
 
-        listaSecuencias = root.findViewById(R.id.listaSecuencias);
-        listaSecuencias.setHasFixedSize(true);
+        final RecyclerView rVSecuencias = root.findViewById(R.id.listaSecuencias);
+        rVSecuencias.setHasFixedSize(true);
+        rVSecuencias.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-
-
-        listaSecuencias.setLayoutManager(llm);
-
-        final List<SecuenciasListModel> modelosListaSecuencias = files.getSecuencias();
-        listaSecuencias.setAdapter(new ListaSecuenciasAdapter(modelosListaSecuencias, new ListaSecuenciasAdapter.SecuenciasAdapterListener() {
+        final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuencias();
+        rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {
             @Override
             public void onClic(int position) {
-                SecuenciasListModel clicada = modelosListaSecuencias.get(position);
+                ListModelSecuencias clicada = modelosListaSecuencias.get(position);
                 navegarASecuencia(clicada);
             }
 
             @Override
             public void onLongClic(int position) {
-                SecuenciasListModel clicada = modelosListaSecuencias.get(position);
+                ListModelSecuencias clicada = modelosListaSecuencias.get(position);
             }
         }));
 
         //Floating Action Button Nueva Secuencia----------------------------------------------------
 
-        fabNuevaSecuencia = root.findViewById(R.id.fabNuevaSecuencia);
+        FloatingActionButton fabNuevaSecuencia = root.findViewById(R.id.fabNuevaSecuencia);
         fabNuevaSecuencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,11 +69,11 @@ public class FragmentMisSecuencias extends Fragment {
                     public void aceptar(String nombre, String artista) {
                         Secuencia secuencia = files.crearSecuencia(nombre, artista);
 
-                        modelosListaSecuencias.add(new SecuenciasListModel(secuencia.getNombreSecuencia()
+                        modelosListaSecuencias.add(new ListModelSecuencias(secuencia.getNombreSecuencia()
                                 , secuencia.getArtistaSecuencia(), secuencia.getIdSecuencia() + ".json"));
 
 
-                        listaSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size() - 1);
+                        rVSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size() - 1);
                     }
                 }, null);
 
@@ -91,12 +83,12 @@ public class FragmentMisSecuencias extends Fragment {
         });
     }
 
-    private void navegarASecuencia(SecuenciasListModel secuencia) {
+    private void navegarASecuencia(ListModelSecuencias secuencia) {
         Bundle bundle = new Bundle();
 
-        bundle.putString(SecuenciasListModel.NOMBRE_SECUENCIA, secuencia.getNombreSecuencia());
-        bundle.putString(SecuenciasListModel.ARTISTA_SECUENCIA, secuencia.getArtistaSecuencia());
-        bundle.putString(SecuenciasListModel.ID_SECUENCIA, secuencia.getRutaArchivo());
+        bundle.putString(ListModelSecuencias.NOMBRE_SECUENCIA, secuencia.getNombreSecuencia());
+        bundle.putString(ListModelSecuencias.ARTISTA_SECUENCIA, secuencia.getArtistaSecuencia());
+        bundle.putString(ListModelSecuencias.ID_SECUENCIA, secuencia.getRutaArchivo());
 
         Navigation.findNavController(getView()).navigate(R.id.nav_dst_mis_secuencias_to_nav_dst_secuencia, bundle);
     }

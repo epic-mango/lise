@@ -27,5 +27,7 @@
     <string name="agregar_pista">New Track</string>
     <string name="guardar">Save</string>
     <string name="guardar_copia">Save a copy</string>
+    <string name="marcadores">Bookmarks</string>
+    <string name="agregar_marcador">Add Bookmark</string>
 
 </resources>

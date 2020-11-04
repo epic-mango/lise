@@ -27,4 +27,6 @@
     <string name="agregar_pista">Agregar pista</string>
     <string name="guardar">Guardar</string>
     <string name="guardar_copia">Guardar una copia</string>
+    <string name="marcadores">Marcadores</string>
+    <string name="agregar_marcador">Agregar marcador</string>
 </resources>

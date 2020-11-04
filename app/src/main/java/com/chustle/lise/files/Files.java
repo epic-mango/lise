@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.chustle.lise.files.models.Secuencia;
-import com.chustle.lise.ui.mis_secuencias.SecuenciasListModel;
+import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -25,9 +25,9 @@ public class Files {
     }
 
 
-    public List<SecuenciasListModel> getSecuencias() {
+    public List<ListModelSecuencias> getSecuencias() {
 
-        List<SecuenciasListModel> listaSecuencias = new ArrayList<>();
+        List<ListModelSecuencias> listaSecuencias = new ArrayList<>();
 
         //An array that lists the file names of the Files Dir
         String[] list = FILES_DIR.list();
@@ -50,11 +50,11 @@ public class Files {
                 Secuencia secuencia = gson.fromJson(br.readLine(), Secuencia.class);
 
                 //Convert to ListModel to display on the RecyclerView
-                SecuenciasListModel secuenciasListModel = new SecuenciasListModel(secuencia.getNombreSecuencia(),
+                ListModelSecuencias listModelSecuencias = new ListModelSecuencias(secuencia.getNombreSecuencia(),
                         secuencia.getArtistaSecuencia(), file);
 
 
-                listaSecuencias.add(secuenciasListModel);
+                listaSecuencias.add(listModelSecuencias);
 
             } catch (IOException e) {
                 e.printStackTrace();
