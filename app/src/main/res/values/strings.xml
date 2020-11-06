@@ -29,5 +29,11 @@
     <string name="guardar_copia">Save a copy</string>
     <string name="marcadores">Bookmarks</string>
     <string name="agregar_marcador">Add Bookmark</string>
+    <string name="pulsos">Pulses</string>
+    <string name="anotaciones">Annotations</string>
+    <string name="audio">Audio</string>
+    <string name="nombre_del_marcador">Bookmark name</string>
+    <string name="nueva_pista_marcadores">New bookmarks track</string>
+    <string name="ejemplo_marcador">Example: Key changes</string>
 
 </resources>

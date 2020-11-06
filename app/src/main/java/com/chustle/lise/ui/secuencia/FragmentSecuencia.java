@@ -1,5 +1,6 @@
 package com.chustle.lise.ui.secuencia;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,26 +10,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
-import com.chustle.lise.files.models.Marcador;
-import com.chustle.lise.files.models.PistaSecuencia;
+import com.chustle.lise.files.FileSecuencia;
+import com.chustle.lise.files.models.Pista;
+import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
+import com.chustle.lise.ui.entrada_datos.DialogFragmentEntradaDatos;
+import com.chustle.lise.ui.entrada_datos.EntradaDato;
 import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 
 import java.util.ArrayList;
 
 public class FragmentSecuencia extends Fragment {
 
-    //Components
-
-
-    //Object
+    //Objects
     Secuencia secuencia;
+    FileSecuencia files;
+    RecyclerView rVPistas;
+    ArrayList<Pista> listaPistas;
 
     public FragmentSecuencia() {
         // Required empty public constructor
@@ -56,12 +61,15 @@ public class FragmentSecuencia extends Fragment {
 
         Bundle bundle = getArguments();
 
-        String nombre = bundle.getString(ListModelSecuencias.NOMBRE_SECUENCIA);
-        String artista = bundle.getString(ListModelSecuencias.ARTISTA_SECUENCIA);
         String id = bundle.getString(ListModelSecuencias.ID_SECUENCIA);
+        files = new FileSecuencia(getContext());
+
+        secuencia = files.getSecuencia(id);
 
         //Set AppBar Title
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(nombre + " - " + artista);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(
+                secuencia.getNombreSecuencia() + " - " +
+                        secuencia.getArtistaSecuencia());
 
         inicializarComponentes(root);
 
@@ -72,17 +80,13 @@ public class FragmentSecuencia extends Fragment {
     private void inicializarComponentes(View root) {
         //--------------RECYCLER VIEW PISTAS----------------------------------------------------
 
-        RecyclerView rVPistas = root.findViewById(R.id.recyclerViewPistas_fragmentSecuencia);
+        rVPistas = root.findViewById(R.id.recyclerViewPistas_fragmentSecuencia);
         rVPistas.setHasFixedSize(true);
         rVPistas.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<PistaSecuencia> listaPistas = new ArrayList<>();
+        listaPistas = secuencia.getListaPistas();
 
-        //Test data
-        listaPistas.add(new Marcador(1, 0, false,"Prueba"));
-        listaPistas.add(new PistaSecuencia(2, 1, false));
-
-        rVPistas.setAdapter(new AdapterListaPistas(listaPistas));
+        rVPistas.setAdapter(new AdapterListaMarcadores(listaPistas));
     }
 
     @Override
@@ -97,10 +101,57 @@ public class FragmentSecuencia extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.mnu_agregar_pista:
-
+                agregarPista();
                 return true;
         }
         return false;
 
+    }
+
+    private void agregarPista() {
+        AlertDialog.Builder agregarPista = new AlertDialog.Builder(getContext());
+
+        String[] lista = {
+                getString(R.string.marcadores),
+                getString(R.string.anotaciones),
+                getString(R.string.audio)
+        };
+
+        agregarPista.setTitle(R.string.agregar_pista)
+                .setItems(lista, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                agregarMarcadores();
+                                break;
+                        }
+                    }
+                });
+
+        agregarPista.show();
+    }
+
+    private void agregarMarcadores() {
+
+        ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+        listaDatos.add(new EntradaDato(
+                getString(R.string.nombre),
+                "",
+                getString(R.string.ejemplo_marcador)
+        ));
+
+        DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
+            @Override
+            public void aceptar(ArrayList<EntradaDato> listaDatos) {
+                PistaMarcadores pistaMarcadores = files.addPistaMarcadores(listaDatos.get(0).getDato(), secuencia, listaPistas.size());
+
+                listaPistas.add(pistaMarcadores);
+                int index = listaPistas.indexOf(pistaMarcadores);
+                rVPistas.getAdapter().notifyItemInserted(index);
+            }
+        }, getString(R.string.nueva_pista_marcadores), listaDatos);
+
+        entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }
 }

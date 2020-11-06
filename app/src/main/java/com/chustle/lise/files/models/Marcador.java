@@ -1,10 +1,7 @@
 package com.chustle.lise.files.models;
 
-public class Marcador extends PistaSecuencia{
-    String nombreMarcador;
+public class Marcador {
+    int compasInicio;
+    String nombre;
 
-    public Marcador(int compasInicio, int indice, boolean expandido, String nombreMarcador) {
-        super(compasInicio, indice, expandido);
-        this.nombreMarcador = nombreMarcador;
-    }
 }

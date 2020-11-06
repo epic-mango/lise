@@ -5,11 +5,7 @@
     <item
         android:id="@+id/mnu_agregar_pista"
         android:icon="@drawable/ic_add"
-        android:title="@string/agregar_pista" />
-    <item
-        android:id="@+id/mnu_guardar_secuencia"
-        android:icon="@drawable/ic_save"
-        android:title="@string/guardar"
+        android:title="@string/agregar_pista"
         app:showAsAction="always" />
 
 </menu>

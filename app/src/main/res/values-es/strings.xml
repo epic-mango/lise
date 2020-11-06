@@ -29,4 +29,10 @@
     <string name="guardar_copia">Guardar una copia</string>
     <string name="marcadores">Marcadores</string>
     <string name="agregar_marcador">Agregar marcador</string>
+    <string name="pulsos">Pulsos</string>
+    <string name="anotaciones">Anotaciones</string>
+    <string name="audio">Audio</string>
+    <string name="nombre_del_marcador">Nombre del marcador</string>
+    <string name="nueva_pista_marcadores">Nueva pista de marcadores</string>
+    <string name="ejemplo_marcador">Ejemplo: Cambios de tonalidad</string>
 </resources>

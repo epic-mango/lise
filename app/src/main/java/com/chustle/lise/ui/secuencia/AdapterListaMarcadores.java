@@ -8,21 +8,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
-import com.chustle.lise.files.models.Marcador;
-import com.chustle.lise.files.models.PistaSecuencia;
+import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.Pista;
 import com.chustle.lise.ui.secuencia.marcadores.ViewHolderMarcadores;
 
 import java.util.List;
 
-public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     //Static Object class identifiers
     public static final int CLASE_MARCADOR = 0;
 
     //List of information for the Adapter
-    private List<PistaSecuencia> listaPistas;
+    private List<Pista> listaPistas;
 
-    public AdapterListaPistas(List<PistaSecuencia> listaPistas) {
+    public AdapterListaMarcadores(List<Pista> listaPistas) {
         this.listaPistas = listaPistas;
     }
 
@@ -33,8 +33,9 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
         //Switch between view types to inflate the rigth layout
         switch (viewType) {
             case CLASE_MARCADOR:
+                int i = getItemCount();
                 return new ViewHolderMarcadores(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
-                        false), listaPistas.get(getItemCount()-1).isExpandido());
+                        false));
             default:
                 return new ViewHolderPistas(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_secuencia, parent,
                         false));
@@ -52,7 +53,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
         String claseActual = listaPistas.get(position).getClass().getName();
 
         //returning the class int identifiers
-        if (claseActual.equals(Marcador.class.getName()))
+        if (claseActual.equals(PistaMarcadores.class.getName()))
             tipo = CLASE_MARCADOR;
 
         return tipo;
@@ -61,6 +62,11 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
+        switch (getItemViewType(position)){
+            case CLASE_MARCADOR:
+                ((ViewHolderMarcadores) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
+                break;
+        }
     }
 
 

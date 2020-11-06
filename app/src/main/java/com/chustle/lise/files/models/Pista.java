@@ -1,12 +1,10 @@
 package com.chustle.lise.files.models;
 
-public class PistaSecuencia {
-    int compasInicio;
+public class Pista {
     int indice;
     boolean expandido;
 
-    public PistaSecuencia(int compasInicio, int indice, boolean expandido) {
-        this.compasInicio = compasInicio;
+    public Pista(int indice, boolean expandido) {
         this.indice = indice;
         this.expandido = expandido;
     }
@@ -14,4 +12,5 @@ public class PistaSecuencia {
     public boolean isExpandido() {
         return expandido;
     }
+
 }

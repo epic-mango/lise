@@ -23,6 +23,7 @@
             app:srcCompat="@drawable/ic_bookmark" />
 
         <TextView
+            android:id="@+id/lblTituloPista_CardPistaMarcador"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

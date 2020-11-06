@@ -13,22 +13,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
-import com.chustle.lise.files.Files;
+import com.chustle.lise.files.FileSecuencia;
 import com.chustle.lise.files.models.Secuencia;
-import com.chustle.lise.ui.secuencia.DialogFragmentPropiedadesSecuencia;
+import com.chustle.lise.ui.entrada_datos.DialogFragmentEntradaDatos;
+import com.chustle.lise.ui.entrada_datos.EntradaDato;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class FragmentMisSecuencias extends Fragment {
 
-    Files files;
+    FileSecuencia files;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_mis_secuencias, container, false);
 
-        files = new Files(getContext());
+        files = new FileSecuencia(getContext());
 
         inicializarComponentes(root);
         return root;
@@ -43,7 +46,7 @@ public class FragmentMisSecuencias extends Fragment {
         rVSecuencias.setHasFixedSize(true);
         rVSecuencias.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuencias();
+        final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuenciasListModel();
         rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {
             @Override
             public void onClic(int position) {
@@ -66,15 +69,25 @@ public class FragmentMisSecuencias extends Fragment {
             @Override
             public void onClick(View v) {
 
+                ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+                listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia)));
+                listaDatos.add(new EntradaDato(getString(R.string.artista), "", getString(R.string.ejemplo_artista_secuencia)));
+
+
                 //Create and show a dialog fragment to get the initial information of a sequence
-                DialogFragment propiedadesSecuencia = new DialogFragmentPropiedadesSecuencia(new DialogFragmentPropiedadesSecuencia.PropiedadesSecuenciaListener() {
+                DialogFragment propiedadesSecuencia = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
 
                     //On Accept
                     @Override
-                    public void aceptar(String nombre, String artista) {
+                    public void aceptar(ArrayList<EntradaDato> listaDatos) {
 
                         //Create a file on the devide with the information from the dialog fragment
-                        Secuencia secuencia = files.crearSecuencia(nombre, artista);
+                        Secuencia secuencia = new Secuencia();
+                        secuencia.setNombreSecuencia(listaDatos.get(0).getDato());
+                        secuencia.setArtistaSecuencia(listaDatos.get(1).getDato());
+                        secuencia.setIdSecuencia(Calendar.getInstance().getTimeInMillis());
+
+                        files.guardarSecuencia(secuencia);
 
                         //Add the new sequence to the list to fill the recyclerView @rVSecuencias
                         modelosListaSecuencias.add(new ListModelSecuencias(secuencia.getNombreSecuencia()
@@ -82,8 +95,10 @@ public class FragmentMisSecuencias extends Fragment {
 
                         //Nototify that a sequence has been added
                         rVSecuencias.getAdapter().notifyItemInserted(modelosListaSecuencias.size() - 1);
+
+
                     }
-                }, null);
+                }, getString(R.string.propiedades_secuencia), listaDatos);
 
                 //Show the dialog fragment
                 propiedadesSecuencia.show(getActivity().getSupportFragmentManager(), "PROPIEDADES_SECUENCIA");

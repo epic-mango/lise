@@ -1,21 +1,36 @@
 package com.chustle.lise.files.models;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Secuencia {
 
+    private ArrayList<PistaMarcadores> listaPistasMarcadores = new ArrayList<>();
     private String nombreSecuencia, artistaSecuencia;
-
     private long idSecuencia;
 
-    List<PistaSecuencia> listaPistas;
+    public ArrayList<PistaMarcadores> getListaPistasMarcadores() {
+        return listaPistasMarcadores;
+    }
 
-    public List<PistaSecuencia> getListaPistas() {
+    public ArrayList<Pista> getListaPistas() {
+        ArrayList<Pista> listaPistas = new ArrayList<>();
+
+        for (Pista p : listaPistasMarcadores)
+            listaPistas.add(p);
+
+
+        for (Pista p: listaPistas){
+            if(p.indice != listaPistas.indexOf(p)){
+                listaPistas.remove(p);
+                listaPistas.add(p.indice, p);
+            }
+        }
+
         return listaPistas;
     }
 
-    public void setListaPistas(List<PistaSecuencia> listaPistas) {
-        this.listaPistas = listaPistas;
+    public void setListaPistas(ArrayList<PistaMarcadores> listaPistasMarcadores) {
+        this.listaPistasMarcadores = listaPistasMarcadores;
     }
 
     public String getNombreSecuencia() {

@@ -8,25 +8,36 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
+import com.chustle.lise.files.models.PistaMarcadores;
 
 public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
 
     RecyclerView recyclerViewMarcadores;
+    PistaMarcadores infoPistaMarcadores;
     private LinearLayout layoutCabecera,
             layoutColumnasTabla,
             layoutAgregarMarcador;
-    private TextView txtMarcadorActual,
-            txtCompasActual;
+    private TextView lblMarcadorActual,
+            lblCompasActual,
+    lblTituloPista;
     private boolean expandido;
 
 
-    public ViewHolderMarcadores(@NonNull final View v, final boolean exp) {
+
+    public ViewHolderMarcadores(@NonNull final View v) {
         super(v);
 
-        //Initializing the boolean that saves if the track was collapsed or expanded
-        this.expandido = exp;
-
         inicializarComponentes(v);
+    }
+
+    public void inicializarComponentes(View root) {
+        recyclerViewMarcadores = root.findViewById(R.id.recyclerViewMarcadores_cardPistaMarcador);
+        layoutCabecera = root.findViewById(R.id.linearLayoutCabecera_CardPistaMarcador);
+        layoutColumnasTabla = root.findViewById(R.id.linearLayoutColumnasTabla_CardPistaMarcador);
+        layoutAgregarMarcador = root.findViewById(R.id.linearLayoutAgregarMarcador_CardPistaMarcador);
+        lblMarcadorActual = root.findViewById(R.id.txtMarcadorActual_CardPistaMarcador);
+        lblCompasActual = root.findViewById(R.id.txtCompasActual_CardPistaMarcador);
+        lblTituloPista = root.findViewById(R.id.lblTituloPista_CardPistaMarcador);
 
         //Alternate the expansion of the components
         layoutCabecera.setOnClickListener(new View.OnClickListener() {
@@ -39,15 +50,17 @@ public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
 
             }
         });
+
     }
 
-    public void inicializarComponentes(View root) {
-        recyclerViewMarcadores = root.findViewById(R.id.recyclerViewMarcadores_cardPistaMarcador);
-        layoutCabecera = root.findViewById(R.id.linearLayoutCabecera_CardPistaMarcador);
-        layoutColumnasTabla = root.findViewById(R.id.linearLayoutColumnasTabla_CardPistaMarcador);
-        layoutAgregarMarcador = root.findViewById(R.id.linearLayoutAgregarMarcador_CardPistaMarcador);
-        txtMarcadorActual = root.findViewById(R.id.txtMarcadorActual_CardPistaMarcador);
-        txtCompasActual = root.findViewById(R.id.txtCompasActual_CardPistaMarcador);
+    public void setInfoPistaMarcadores(PistaMarcadores infoPistaMarcadores) {
+        this.infoPistaMarcadores = infoPistaMarcadores;
+        this.lblTituloPista.setText(infoPistaMarcadores.getTitulo());
+
+        if (this.infoPistaMarcadores.isExpandido())
+            expandir();
+        else
+            contraer();
     }
 
     private void expandir() {
