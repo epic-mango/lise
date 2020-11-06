@@ -42,7 +42,7 @@ public class Files {
             //Get the file from list
             fileSecuencia = new File(FILES_DIR, file);
             try {
-                //prepare te Reader
+                //prepare the Reader
                 br = new BufferedReader(new FileReader(fileSecuencia));
 
                 //Read line and transform from JSON string to Java Object

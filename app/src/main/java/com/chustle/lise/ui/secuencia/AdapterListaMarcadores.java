@@ -30,7 +30,7 @@ public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //Switch between view types to inflate the rigth layout
+        //Switch between view types to inflate the right layout
         switch (viewType) {
             case CLASE_MARCADOR:
                 int i = getItemCount();

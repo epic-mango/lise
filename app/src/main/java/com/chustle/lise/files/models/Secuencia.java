@@ -2,9 +2,12 @@ package com.chustle.lise.files.models;
 
 import java.util.ArrayList;
 
+//This class represents al the data needed to a Sequence
 public class Secuencia {
 
+    //List of bookmarks
     private ArrayList<PistaMarcadores> listaPistasMarcadores = new ArrayList<>();
+
     private String nombreSecuencia, artistaSecuencia;
     private long idSecuencia;
 
@@ -12,6 +15,8 @@ public class Secuencia {
         return listaPistasMarcadores;
     }
 
+    //This method returns the information from the File asocciated to this Sequence instance, but
+    //orders it as the user wanted and saved in the file
     public ArrayList<Pista> getListaPistas() {
         ArrayList<Pista> listaPistas = new ArrayList<>();
 
@@ -27,10 +32,6 @@ public class Secuencia {
         }
 
         return listaPistas;
-    }
-
-    public void setListaPistas(ArrayList<PistaMarcadores> listaPistasMarcadores) {
-        this.listaPistasMarcadores = listaPistasMarcadores;
     }
 
     public String getNombreSecuencia() {

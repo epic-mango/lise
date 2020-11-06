@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.chustle.lise.files.models.Marcador;
-import com.chustle.lise.files.models.Pista;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
 import com.google.gson.Gson;
@@ -16,7 +15,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FileSecuencia extends Files {
 
@@ -58,6 +56,7 @@ public class FileSecuencia extends Files {
         return null;
     }
 
+    //Returns a Java Object, instance of the File from internal device storage
     public Secuencia getSecuencia(String fileName) {
         try {
             String fileJson = new BufferedReader(new FileReader(FILES_DIR + "/" + fileName)).readLine();
@@ -70,10 +69,12 @@ public class FileSecuencia extends Files {
         }
     }
 
+    //Adds a BookmarksTrack to the internal storage and returns a Java Object that will be used to
+    //be included in the UI's RecyclerView
     public PistaMarcadores addPistaMarcadores(String titulo, Secuencia secuencia, int indice) {
 
         ArrayList<PistaMarcadores> pistasMarcadores = secuencia.getListaPistasMarcadores();
-        PistaMarcadores pistaMarcadores = new PistaMarcadores(indice,false, titulo, new ArrayList<Marcador>());
+        PistaMarcadores pistaMarcadores = new PistaMarcadores(indice, false, titulo, new ArrayList<Marcador>());
 
         pistasMarcadores.add(pistaMarcadores);
 

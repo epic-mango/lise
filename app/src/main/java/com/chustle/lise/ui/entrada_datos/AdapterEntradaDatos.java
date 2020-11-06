@@ -30,10 +30,12 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
         View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_entrada_dato, parent, false);
 
         return new EntradaDatosViewHolder(root, new EntradaDatoListener() {
+            //When the EditText changed text event is called, the ArrayList object is updated. Then
+            //the user clicks "Accept" and that information is used
+
             @Override
             public void setEntradaDato(int position, String dato) {
                 listaDatos.get(position).dato = dato;
-
             }
         });
     }
@@ -44,6 +46,7 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
         holder.txtEntradaDato.setHint(listaDatos.get(position).ejemplo);
         holder.txtEntradaDato.setText(listaDatos.get(position).dato);
 
+        //Listen when text is changed and update the ArrayList
         holder.txtEntradaDato.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -24,8 +24,7 @@ public class DialogFragmentEntradaDatos extends DialogFragment {
     String titulo;
 
     public DialogFragmentEntradaDatos(EntradaDatosListener entradaDatosListener, String titulo,
-                                      ArrayList<EntradaDato> listaDatos
-    ) {
+                                      ArrayList<EntradaDato> listaDatos) {
         listener = entradaDatosListener;
         this.titulo = titulo;
         this.listaDatos = listaDatos;
@@ -69,7 +68,7 @@ public class DialogFragmentEntradaDatos extends DialogFragment {
                 }
 
                 if (completo) {
-                    listener.aceptar(listaDatos);
+                    listener.aceptar();
                     dismiss();
                 }
 
@@ -90,6 +89,6 @@ public class DialogFragmentEntradaDatos extends DialogFragment {
 
 
     public interface EntradaDatosListener {
-        void aceptar(ArrayList<EntradaDato> listaDatos);
+        void aceptar();
     }
 }

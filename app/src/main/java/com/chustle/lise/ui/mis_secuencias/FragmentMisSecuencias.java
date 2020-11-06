@@ -69,7 +69,7 @@ public class FragmentMisSecuencias extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+                final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
                 listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia)));
                 listaDatos.add(new EntradaDato(getString(R.string.artista), "", getString(R.string.ejemplo_artista_secuencia)));
 
@@ -79,9 +79,9 @@ public class FragmentMisSecuencias extends Fragment {
 
                     //On Accept
                     @Override
-                    public void aceptar(ArrayList<EntradaDato> listaDatos) {
+                    public void aceptar() {
 
-                        //Create a file on the devide with the information from the dialog fragment
+                        //Create a file on the device with the information from the dialog fragment
                         Secuencia secuencia = new Secuencia();
                         secuencia.setNombreSecuencia(listaDatos.get(0).getDato());
                         secuencia.setArtistaSecuencia(listaDatos.get(1).getDato());

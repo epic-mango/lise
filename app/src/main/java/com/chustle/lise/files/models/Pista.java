@@ -1,5 +1,6 @@
 package com.chustle.lise.files.models;
 
+//This class represents a Track of a Sequence (Secuencia)
 public class Pista {
     int indice;
     boolean expandido;

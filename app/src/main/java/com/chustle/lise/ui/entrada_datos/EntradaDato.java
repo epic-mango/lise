@@ -1,5 +1,7 @@
 package com.chustle.lise.ui.entrada_datos;
 
+//This object contains the Field name (campo), Default Data(dato) and the Hint(ejemplo) of a Dialog
+//Fragment of Strings
 public class EntradaDato {
     String campo;
     String dato;

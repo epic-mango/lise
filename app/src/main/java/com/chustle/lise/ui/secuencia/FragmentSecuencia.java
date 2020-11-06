@@ -134,7 +134,7 @@ public class FragmentSecuencia extends Fragment {
 
     private void agregarMarcadores() {
 
-        ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+        final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
         listaDatos.add(new EntradaDato(
                 getString(R.string.nombre),
                 "",
@@ -143,7 +143,7 @@ public class FragmentSecuencia extends Fragment {
 
         DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
             @Override
-            public void aceptar(ArrayList<EntradaDato> listaDatos) {
+            public void aceptar() {
                 PistaMarcadores pistaMarcadores = files.addPistaMarcadores(listaDatos.get(0).getDato(), secuencia, listaPistas.size());
 
                 listaPistas.add(pistaMarcadores);
