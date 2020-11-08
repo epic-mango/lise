@@ -28,11 +28,25 @@
     <string name="guardar">Guardar</string>
     <string name="guardar_copia">Guardar una copia</string>
     <string name="marcadores">Marcadores</string>
-    <string name="agregar_marcador">Agregar marcador</string>
+    <string name="editar_marcador">Editar marcador</string>
     <string name="pulsos">Pulsos</string>
     <string name="anotaciones">Anotaciones</string>
     <string name="audio">Audio</string>
     <string name="nombre_del_marcador">Nombre del marcador</string>
     <string name="nueva_pista_marcadores">Nueva pista de marcadores</string>
-    <string name="ejemplo_marcador">Ejemplo: Cambios de tonalidad</string>
+    <string name="ejemplo_pista_marcador">Ejemplo: Cambios de tonalidad</string>
+    <string name="ejemplo_nombre_marcador">Ejemplo: La Menor</string>
+    <string name="compas_inicio">Compás de inicio</string>
+    <string name="ejemplo_numero">Un número mayor a cero</string>
+    <string name="iniciar_en">Iniciar en</string>
+    <string name="compas">Compás</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="tiempo_inicio">Tiempo de inicio</string>
+    <string name="horas">Horas</string>
+    <string name="minutos">Minutos</string>
+    <string name="segundos">Segundos</string>
+    <string name="milisegundos">Milisegundos</string>
+    <string name="no_numero">No es un número</string>
+    <string name="error_formato_hora">Formato de tiempo corregido</string>
+    <string name="agregar_marcador">Agregar marcador</string>
 </resources>

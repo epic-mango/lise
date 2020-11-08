@@ -1,20 +1,24 @@
-package com.chustle.lise.ui.secuencia;
+package com.chustle.lise.ui.mis_secuencias.secuencia;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
-import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.Pista;
-import com.chustle.lise.ui.secuencia.marcadores.ViewHolderMarcadores;
+import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.ui.mis_secuencias.secuencia.marcadores.ViewHolderPistaMarcador;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+
 
     //Static Object class identifiers
     public static final int CLASE_MARCADOR = 0;
@@ -22,8 +26,11 @@ public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.Vi
     //List of information for the Adapter
     private List<Pista> listaPistas;
 
-    public AdapterListaMarcadores(List<Pista> listaPistas) {
+    FragmentManager supportFragmentManager;
+
+    public AdapterListaPistas(List<Pista> listaPistas, FragmentManager supportFragmentManager) {
         this.listaPistas = listaPistas;
+        this.supportFragmentManager =supportFragmentManager;
     }
 
     @NonNull
@@ -31,14 +38,13 @@ public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.Vi
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //Switch between view types to inflate the right layout
+
         switch (viewType) {
             case CLASE_MARCADOR:
-                int i = getItemCount();
-                return new ViewHolderMarcadores(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
-                        false));
+                return new ViewHolderPistaMarcador(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
+                        false), new ArrayList<Marcador>(), supportFragmentManager);
             default:
-                return new ViewHolderPistas(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_secuencia, parent,
-                        false));
+                return null;
 
         }
 
@@ -62,9 +68,10 @@ public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case CLASE_MARCADOR:
-                ((ViewHolderMarcadores) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
+                ((ViewHolderPistaMarcador) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
+                ((ViewHolderPistaMarcador) holder).titulo = ((PistaMarcadores) listaPistas.get(position)).getTitulo().toLowerCase();
                 break;
         }
     }
@@ -75,17 +82,9 @@ public class AdapterListaMarcadores extends RecyclerView.Adapter<RecyclerView.Vi
         return listaPistas.size();
     }
 
-    static class ViewHolderPistas extends RecyclerView.ViewHolder {
-
-
-        public ViewHolderPistas(@NonNull final View v) {
-            super(v);
-
-
-        }
-    }
-
-
-
 }
+
+
+
+
 

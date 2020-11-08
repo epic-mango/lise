@@ -28,12 +28,26 @@
     <string name="guardar">Save</string>
     <string name="guardar_copia">Save a copy</string>
     <string name="marcadores">Bookmarks</string>
-    <string name="agregar_marcador">Add Bookmark</string>
+    <string name="editar_marcador">Edit Bookmark</string>
     <string name="pulsos">Pulses</string>
     <string name="anotaciones">Annotations</string>
     <string name="audio">Audio</string>
     <string name="nombre_del_marcador">Bookmark name</string>
     <string name="nueva_pista_marcadores">New bookmarks track</string>
-    <string name="ejemplo_marcador">Example: Key changes</string>
+    <string name="ejemplo_pista_marcador">Example: Key changes</string>
+    <string name="ejemplo_nombre_marcador">Example: A minor</string>
+    <string name="compas_inicio">Starting bar</string>
+    <string name="ejemplo_numero">A number greater than 0</string>
+    <string name="iniciar_en">Starts on</string>
+    <string name="compas">Bar</string>
+    <string name="tiempo">Time</string>
+    <string name="tiempo_inicio">Starting time</string>
+    <string name="horas">Hours</string>
+    <string name="minutos">Minutes</string>
+    <string name="segundos">Seconds</string>
+    <string name="milisegundos">Milliseconds</string>
+    <string name="no_numero">Not an number</string>
+    <string name="error_formato_hora">Time formated</string>
+    <string name="agregar_marcador">Add Bookmark</string>
 
 </resources>

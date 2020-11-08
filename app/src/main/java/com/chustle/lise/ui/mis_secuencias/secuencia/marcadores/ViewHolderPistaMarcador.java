@@ -1,45 +1,52 @@
-package com.chustle.lise.ui.secuencia.marcadores;
+package com.chustle.lise.ui.mis_secuencias.secuencia.marcadores;
 
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
+import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.PistaMarcadores;
 
-public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
+import java.util.ArrayList;
+
+public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
 
     RecyclerView recyclerViewMarcadores;
     PistaMarcadores infoPistaMarcadores;
+    ArrayList<Marcador> listaMarcadores;
+    FragmentManager supportFragmentManager;
     private LinearLayout layoutCabecera,
-            layoutColumnasTabla,
             layoutAgregarMarcador;
     private TextView lblMarcadorActual,
             lblCompasActual,
-    lblTituloPista;
+            lblTituloPista;
     private boolean expandido;
 
+    public String titulo;
 
 
-    public ViewHolderMarcadores(@NonNull final View v) {
+    public ViewHolderPistaMarcador(@NonNull final View v, ArrayList<Marcador> listaMarcadores, FragmentManager supportFragmentManager) {
         super(v);
-
+        this.listaMarcadores = listaMarcadores;
+        this.supportFragmentManager = supportFragmentManager;
         inicializarComponentes(v);
     }
 
-    public void inicializarComponentes(View root) {
+    public void inicializarComponentes(final View root) {
         recyclerViewMarcadores = root.findViewById(R.id.recyclerViewMarcadores_cardPistaMarcador);
         layoutCabecera = root.findViewById(R.id.linearLayoutCabecera_CardPistaMarcador);
-        layoutColumnasTabla = root.findViewById(R.id.linearLayoutColumnasTabla_CardPistaMarcador);
         layoutAgregarMarcador = root.findViewById(R.id.linearLayoutAgregarMarcador_CardPistaMarcador);
         lblMarcadorActual = root.findViewById(R.id.txtMarcadorActual_CardPistaMarcador);
         lblCompasActual = root.findViewById(R.id.txtCompasActual_CardPistaMarcador);
         lblTituloPista = root.findViewById(R.id.lblTituloPista_CardPistaMarcador);
 
-        //Alternate the expansion of the components
+        //Alternate the expansion of the components-------------------------------------------------
         layoutCabecera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +57,27 @@ public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
 
             }
         });
+
+        //-----------------------------------------Recycler view------------------------------------
+
+        recyclerViewMarcadores.setAdapter(new AdapterListaMarcadores(listaMarcadores));
+        recyclerViewMarcadores.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+        //------------------------------lblAgregarMarcador------------------------------------------
+
+
+        layoutAgregarMarcador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DialogFragmentEditarMarcador dialog = new DialogFragmentEditarMarcador(
+                        null, titulo);
+                dialog.show(supportFragmentManager, "EditarMarcador");
+            }
+        });
+
+
+        //-------------------------------------
 
     }
 
@@ -64,7 +92,6 @@ public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
     }
 
     private void expandir() {
-        layoutColumnasTabla.setVisibility(View.VISIBLE);
         recyclerViewMarcadores.setVisibility(View.VISIBLE);
         layoutAgregarMarcador.setVisibility(View.VISIBLE);
 
@@ -72,11 +99,9 @@ public class ViewHolderMarcadores extends RecyclerView.ViewHolder {
     }
 
     private void contraer() {
-        layoutColumnasTabla.setVisibility(View.GONE);
         recyclerViewMarcadores.setVisibility(View.GONE);
         layoutAgregarMarcador.setVisibility(View.GONE);
 
         this.expandido = false;
-
     }
 }

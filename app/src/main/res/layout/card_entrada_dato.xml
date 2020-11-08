@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/lblNombreDato_CardEntradaDato"
+        android:id="@+id/lblCompasInicio_DialogFragmentAgregarMarcador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,5 +28,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNombreDato_CardEntradaDato" />
+        app:layout_constraintTop_toBottomOf="@+id/lblCompasInicio_DialogFragmentAgregarMarcador" />
 </androidx.constraintlayout.widget.ConstraintLayout>

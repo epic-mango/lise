@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +45,7 @@ public class FragmentMisSecuencias extends Fragment {
 
         final RecyclerView rVSecuencias = root.findViewById(R.id.listaSecuencias);
         rVSecuencias.setHasFixedSize(true);
-        rVSecuencias.setLayoutManager(new LinearLayoutManager(getContext()));
+        rVSecuencias.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuenciasListModel();
         rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {

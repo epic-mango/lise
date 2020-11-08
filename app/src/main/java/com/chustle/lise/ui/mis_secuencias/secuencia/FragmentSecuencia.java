@@ -1,4 +1,4 @@
-package com.chustle.lise.ui.secuencia;
+package com.chustle.lise.ui.mis_secuencias.secuencia;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -86,7 +86,7 @@ public class FragmentSecuencia extends Fragment {
 
         listaPistas = secuencia.getListaPistas();
 
-        rVPistas.setAdapter(new AdapterListaMarcadores(listaPistas));
+        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager()));
     }
 
     @Override
@@ -138,7 +138,7 @@ public class FragmentSecuencia extends Fragment {
         listaDatos.add(new EntradaDato(
                 getString(R.string.nombre),
                 "",
-                getString(R.string.ejemplo_marcador)
+                getString(R.string.ejemplo_pista_marcador)
         ));
 
         DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {

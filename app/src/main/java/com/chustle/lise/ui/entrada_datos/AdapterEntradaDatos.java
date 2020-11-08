@@ -82,7 +82,7 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
         public EntradaDatosViewHolder(@NonNull View itemView, final EntradaDatoListener listener) {
             super(itemView);
             this.listener = listener;
-            lblNombreDato = itemView.findViewById(R.id.lblNombreDato_CardEntradaDato);
+            lblNombreDato = itemView.findViewById(R.id.lblCompasInicio_DialogFragmentAgregarMarcador);
             txtEntradaDato = itemView.findViewById(R.id.txtEntradaDato_CardEntradaDato);
 
 

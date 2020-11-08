@@ -13,27 +13,11 @@ public class EntradaDato {
         this.ejemplo = ejemplo;
     }
 
-    public String getCampo() {
-        return campo;
-    }
 
-    public void setCampo(String campo) {
-        this.campo = campo;
-    }
 
     public String getDato() {
         return dato;
     }
 
-    public void setDato(String dato) {
-        this.dato = dato;
-    }
 
-    public String getEjemplo() {
-        return ejemplo;
-    }
-
-    public void setEjemplo(String ejemplo) {
-        this.ejemplo = ejemplo;
-    }
 }
