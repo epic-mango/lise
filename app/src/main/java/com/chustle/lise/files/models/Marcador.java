@@ -24,4 +24,16 @@ public class Marcador {
     public boolean isTiempo() {
         return tiempo;
     }
+
+    public void setInicio(int inicio) {
+        this.inicio = inicio;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setIsTiempo(boolean tiempo) {
+        this.tiempo = tiempo;
+    }
 }

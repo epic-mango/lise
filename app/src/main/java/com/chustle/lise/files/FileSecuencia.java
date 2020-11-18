@@ -74,7 +74,7 @@ public class FileSecuencia extends Files {
     public PistaMarcadores addPistaMarcadores(String titulo, Secuencia secuencia, int indice) {
 
         ArrayList<PistaMarcadores> pistasMarcadores = secuencia.getListaPistasMarcadores();
-        PistaMarcadores pistaMarcadores = new PistaMarcadores(indice, false, titulo, new ArrayList<Marcador>());
+        PistaMarcadores pistaMarcadores = new PistaMarcadores(indice, true, titulo, new ArrayList<Marcador>());
 
         pistasMarcadores.add(pistaMarcadores);
 

@@ -25,48 +25,24 @@
             android:id="@+id/lblTituloPista_CardPistaMarcador"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/marcadores"
-            android:textAlignment="textStart" />
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:text="@string/marcadores"/>
 
         <TextView
             android:id="@+id/txtMarcadorActual_CardPistaMarcador"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:background="@drawable/shape_round_rect"
             android:gravity="center"
             android:padding="3dp"
-            android:text="TextView" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/shape_round_rect"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/ic_compas" />
-
-            <TextView
-                android:id="@+id/txtCompasActual_CardPistaMarcador"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                android:text="000" />
-        </LinearLayout>
+            android:text="Marcador Actual" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:background="@drawable/shape_round_rect"
             android:scaleType="center"
             app:srcCompat="@drawable/ic_movement" />
@@ -74,7 +50,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:background="@drawable/shape_round_rect"
             app:srcCompat="@drawable/ic_locked" />
 

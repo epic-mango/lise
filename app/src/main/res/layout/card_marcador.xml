@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imgTipo_cardMarcador"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:minWidth="10dp"

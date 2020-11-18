@@ -24,7 +24,6 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
     private LinearLayout layoutCabecera,
             layoutAgregarMarcador;
     private TextView lblMarcadorActual,
-            lblCompasActual,
             lblTituloPista;
     private boolean expandido;
 
@@ -43,7 +42,6 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
         layoutCabecera = root.findViewById(R.id.linearLayoutCabecera_CardPistaMarcador);
         layoutAgregarMarcador = root.findViewById(R.id.linearLayoutAgregarMarcador_CardPistaMarcador);
         lblMarcadorActual = root.findViewById(R.id.txtMarcadorActual_CardPistaMarcador);
-        lblCompasActual = root.findViewById(R.id.txtCompasActual_CardPistaMarcador);
         lblTituloPista = root.findViewById(R.id.lblTituloPista_CardPistaMarcador);
 
         //Alternate the expansion of the components-------------------------------------------------
@@ -71,7 +69,13 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
             public void onClick(View v) {
 
                 DialogFragmentEditarMarcador dialog = new DialogFragmentEditarMarcador(
-                        null, titulo);
+                        null, titulo, 1, 0, new DialogFragmentEditarMarcador.DialogFragmentEditarMarcadorListener() {
+                    @Override
+                    public void onAccept(Marcador marcador) {
+                        listaMarcadores.add(marcador);
+                        recyclerViewMarcadores.getAdapter().notifyItemInserted(listaMarcadores.size()-1);
+                    }
+                });
                 dialog.show(supportFragmentManager, "EditarMarcador");
             }
         });

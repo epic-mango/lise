@@ -49,4 +49,6 @@
     <string name="no_numero">No es un número</string>
     <string name="error_formato_hora">Formato de tiempo corregido</string>
     <string name="agregar_marcador">Agregar marcador</string>
+    <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="error_compas">Ese compás no existe</string>
 </resources>

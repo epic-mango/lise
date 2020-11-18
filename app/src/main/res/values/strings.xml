@@ -47,7 +47,9 @@
     <string name="segundos">Seconds</string>
     <string name="milisegundos">Milliseconds</string>
     <string name="no_numero">Not an number</string>
-    <string name="error_formato_hora">Time formated</string>
+    <string name="error_formato_hora">Time formatted</string>
     <string name="agregar_marcador">Add Bookmark</string>
+    <string name="error_nombre_vacio">The name can not be blank</string>
+    <string name="error_compas">That bar doesn\'t exists</string>
 
 </resources>
