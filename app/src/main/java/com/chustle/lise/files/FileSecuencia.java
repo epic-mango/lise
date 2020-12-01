@@ -40,9 +40,7 @@ public class FileSecuencia extends Files {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileSecuencia, false));
 
 
-            //Escribimos la hora de guardado
-            //Write the saving time
-            secuencia.setVersionSecuencia(Calendar.getInstance().getTimeInMillis());
+
 
             //Converting the JavaObject to JSON string
             //Convertimos el objeto java a una cadena JSON

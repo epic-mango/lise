@@ -27,6 +27,7 @@ import com.chustle.lise.ui.entrada_datos.EntradaDato;
 import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FragmentSecuencia extends Fragment {
 
@@ -105,6 +106,11 @@ public class FragmentSecuencia extends Fragment {
                 agregarPista();
                 return true;
             case R.id.mnu_guardar_fragmentSecuencia:
+
+                //Escribimos la hora de guardado
+                //Write the saving time
+                secuencia.setVersionSecuencia(Calendar.getInstance().getTimeInMillis());
+
                 files.guardarSecuencia(secuencia);
                 return true;
         }
