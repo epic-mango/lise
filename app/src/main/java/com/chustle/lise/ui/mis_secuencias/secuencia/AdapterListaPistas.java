@@ -11,7 +11,7 @@ import com.chustle.lise.R;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.Pista;
 import com.chustle.lise.files.models.PistaMarcadores;
-import com.chustle.lise.ui.mis_secuencias.secuencia.marcadores.ViewHolderPistaMarcador;
+import com.chustle.lise.ui.mis_secuencias.secuencia.marcadores.ViewHolderPistaMarcadores;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +41,8 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         switch (viewType) {
             case CLASE_MARCADOR:
-                return new ViewHolderPistaMarcador(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
-                        false), new ArrayList<Marcador>(), supportFragmentManager);
+                return new ViewHolderPistaMarcadores(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
+                        false), supportFragmentManager);
             default:
                 return null;
 
@@ -70,8 +70,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         switch (getItemViewType(position)) {
             case CLASE_MARCADOR:
-                ((ViewHolderPistaMarcador) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
-                ((ViewHolderPistaMarcador) holder).titulo = ((PistaMarcadores) listaPistas.get(position)).getTitulo().toLowerCase();
+                ((ViewHolderPistaMarcadores) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
                 break;
         }
     }

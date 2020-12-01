@@ -3,9 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mnu_agregar_pista"
+        android:id="@+id/mnu_agregar_pista_fragmentSecuencia"
         android:icon="@drawable/ic_add"
         android:title="@string/agregar_pista"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/mnu_guardar_fragmentSecuencia"
+        android:icon="@drawable/ic_save"
+        android:title="@string/guardar"
+        app:showAsAction="ifRoom" />
 
 </menu>

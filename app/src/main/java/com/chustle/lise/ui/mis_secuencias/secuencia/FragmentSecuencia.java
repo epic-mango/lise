@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
 import com.chustle.lise.files.FileSecuencia;
+import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.Pista;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
@@ -100,8 +101,11 @@ public class FragmentSecuencia extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.mnu_agregar_pista:
+            case R.id.mnu_agregar_pista_fragmentSecuencia:
                 agregarPista();
+                return true;
+            case R.id.mnu_guardar_fragmentSecuencia:
+                files.guardarSecuencia(secuencia);
                 return true;
         }
         return false;
@@ -123,7 +127,7 @@ public class FragmentSecuencia extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                agregarMarcadores();
+                                agregarPistaMarcadores();
                                 break;
                         }
                     }
@@ -132,7 +136,7 @@ public class FragmentSecuencia extends Fragment {
         agregarPista.show();
     }
 
-    private void agregarMarcadores() {
+    private void agregarPistaMarcadores() {
 
         final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
         listaDatos.add(new EntradaDato(
@@ -144,11 +148,14 @@ public class FragmentSecuencia extends Fragment {
         DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
             @Override
             public void aceptar() {
-                PistaMarcadores pistaMarcadores = files.addPistaMarcadores(listaDatos.get(0).getDato(), secuencia, listaPistas.size());
+
+                PistaMarcadores pistaMarcadores = new PistaMarcadores(listaPistas.size(), true, listaDatos.get(0).getDato(), new ArrayList<Marcador>());
 
                 listaPistas.add(pistaMarcadores);
+                secuencia.getListaPistasMarcadores().add(pistaMarcadores);
                 int index = listaPistas.indexOf(pistaMarcadores);
                 rVPistas.getAdapter().notifyItemInserted(index);
+
             }
         }, getString(R.string.nueva_pista_marcadores), listaDatos);
 

@@ -9,10 +9,30 @@ public class Secuencia {
     private ArrayList<PistaMarcadores> listaPistasMarcadores = new ArrayList<>();
 
     private String nombreSecuencia, artistaSecuencia;
-    private long idSecuencia;
+    private long idSecuencia, versionSecuencia;
 
     public ArrayList<PistaMarcadores> getListaPistasMarcadores() {
         return listaPistasMarcadores;
+    }
+
+    public Secuencia(ArrayList<PistaMarcadores> listaPistasMarcadores, String nombreSecuencia, String artistaSecuencia, long idSecuencia, long versionSecuencia) {
+        this.listaPistasMarcadores = listaPistasMarcadores;
+        this.nombreSecuencia = nombreSecuencia;
+        this.artistaSecuencia = artistaSecuencia;
+        this.idSecuencia = idSecuencia;
+        this.versionSecuencia = versionSecuencia;
+    }
+
+    public void setListaPistasMarcadores(ArrayList<PistaMarcadores> listaPistasMarcadores) {
+        this.listaPistasMarcadores = listaPistasMarcadores;
+    }
+
+    public long getVersionSecuencia() {
+        return versionSecuencia;
+    }
+
+    public void setVersionSecuencia(long versionSecuencia) {
+        this.versionSecuencia = versionSecuencia;
     }
 
     //This method returns the information from the File asocciated to this Sequence instance, but
@@ -24,8 +44,8 @@ public class Secuencia {
             listaPistas.add(p);
 
 
-        for (Pista p: listaPistas){
-            if(p.indice != listaPistas.indexOf(p)){
+        for (Pista p : listaPistas) {
+            if (p.indice != listaPistas.indexOf(p)) {
                 listaPistas.remove(p);
                 listaPistas.add(p.indice, p);
             }

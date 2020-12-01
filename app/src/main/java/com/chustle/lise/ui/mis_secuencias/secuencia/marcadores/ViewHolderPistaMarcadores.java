@@ -15,7 +15,7 @@ import com.chustle.lise.files.models.PistaMarcadores;
 
 import java.util.ArrayList;
 
-public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
+public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
 
     RecyclerView recyclerViewMarcadores;
     PistaMarcadores infoPistaMarcadores;
@@ -27,12 +27,11 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
             lblTituloPista;
     private boolean expandido;
 
-    public String titulo;
+    private String titulo;
 
 
-    public ViewHolderPistaMarcador(@NonNull final View v, ArrayList<Marcador> listaMarcadores, FragmentManager supportFragmentManager) {
+    public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager) {
         super(v);
-        this.listaMarcadores = listaMarcadores;
         this.supportFragmentManager = supportFragmentManager;
         inicializarComponentes(v);
     }
@@ -58,7 +57,7 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
 
         //-----------------------------------------Recycler view------------------------------------
 
-        recyclerViewMarcadores.setAdapter(new AdapterListaMarcadores(listaMarcadores));
+
         recyclerViewMarcadores.setLayoutManager(new LinearLayoutManager(root.getContext()));
 
         //------------------------------lblAgregarMarcador------------------------------------------
@@ -87,12 +86,16 @@ public class ViewHolderPistaMarcador extends RecyclerView.ViewHolder {
 
     public void setInfoPistaMarcadores(PistaMarcadores infoPistaMarcadores) {
         this.infoPistaMarcadores = infoPistaMarcadores;
+        this.listaMarcadores  = infoPistaMarcadores.getListaMarcadores();
         this.lblTituloPista.setText(infoPistaMarcadores.getTitulo());
+        this.titulo = infoPistaMarcadores.getTitulo();
 
         if (this.infoPistaMarcadores.isExpandido())
             expandir();
         else
             contraer();
+
+        recyclerViewMarcadores.setAdapter(new AdapterListaMarcadores(listaMarcadores));
     }
 
     private void expandir() {

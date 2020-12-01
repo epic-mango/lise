@@ -25,7 +25,6 @@ public class FileSecuencia extends Files {
 
     public Secuencia guardarSecuencia(Secuencia secuencia) {
 
-
         //Creamos un archivo para la secuencia
         //Create a file to save the sequence object
         File fileSecuencia = new File(FILES_DIR, secuencia.getIdSecuencia() + ".json");
@@ -69,17 +68,4 @@ public class FileSecuencia extends Files {
         }
     }
 
-    //Adds a BookmarksTrack to the internal storage and returns a Java Object that will be used to
-    //be included in the UI's RecyclerView
-    public PistaMarcadores addPistaMarcadores(String titulo, Secuencia secuencia, int indice) {
-
-        ArrayList<PistaMarcadores> pistasMarcadores = secuencia.getListaPistasMarcadores();
-        PistaMarcadores pistaMarcadores = new PistaMarcadores(indice, true, titulo, new ArrayList<Marcador>());
-
-        pistasMarcadores.add(pistaMarcadores);
-
-        guardarSecuencia(secuencia);
-
-        return pistaMarcadores;
-    }
 }

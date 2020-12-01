@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
 import com.chustle.lise.files.FileSecuencia;
+import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.entrada_datos.DialogFragmentEntradaDatos;
 import com.chustle.lise.ui.entrada_datos.EntradaDato;
@@ -83,10 +84,12 @@ public class FragmentMisSecuencias extends Fragment {
                     public void aceptar() {
 
                         //Create a file on the device with the information from the dialog fragment
-                        Secuencia secuencia = new Secuencia();
-                        secuencia.setNombreSecuencia(listaDatos.get(0).getDato());
-                        secuencia.setArtistaSecuencia(listaDatos.get(1).getDato());
-                        secuencia.setIdSecuencia(Calendar.getInstance().getTimeInMillis());
+                        Secuencia secuencia = new Secuencia(
+                                new ArrayList<PistaMarcadores>(),
+                                listaDatos.get(0).getDato(),
+                                listaDatos.get(1).getDato(),
+                                Calendar.getInstance().getTimeInMillis(),
+                                Calendar.getInstance().getTimeInMillis());
 
                         files.guardarSecuencia(secuencia);
 
