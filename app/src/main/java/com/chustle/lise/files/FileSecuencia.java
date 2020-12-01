@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FileSecuencia extends Files {
 
@@ -37,6 +38,11 @@ public class FileSecuencia extends Files {
             //Creamos un escritor para el archivo
             //Writer for the file
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileSecuencia, false));
+
+
+            //Escribimos la hora de guardado
+            //Write the saving time
+            secuencia.setVersionSecuencia(Calendar.getInstance().getTimeInMillis());
 
             //Converting the JavaObject to JSON string
             //Convertimos el objeto java a una cadena JSON
