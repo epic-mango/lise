@@ -43,16 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:background="@drawable/shape_round_rect"
             android:scaleType="center"
-            app:srcCompat="@drawable/ic_movement" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="@drawable/shape_round_rect"
-            app:srcCompat="@drawable/ic_locked" />
+            app:srcCompat="@drawable/ic_movement"
+            android:paddingHorizontal="8dp"/>
 
     </LinearLayout>
 

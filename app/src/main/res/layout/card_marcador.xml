@@ -35,9 +35,10 @@
 
         <TextView
             android:id="@+id/lblNombreMarcador_cardMarcador"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Nombre Marcador" />
+            android:text="Nombre Marcador"
+            android:textAlignment="center" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
