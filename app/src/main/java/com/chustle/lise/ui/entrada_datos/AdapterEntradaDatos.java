@@ -1,6 +1,7 @@
 package com.chustle.lise.ui.entrada_datos;
 
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,10 +42,21 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final  EntradaDatosViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final EntradaDatosViewHolder holder, final int position) {
         holder.lblNombreDato.setText(listaDatos.get(position).campo);
         holder.txtEntradaDato.setHint(listaDatos.get(position).ejemplo);
         holder.txtEntradaDato.setText(listaDatos.get(position).dato);
+
+        switch (listaDatos.get(position).getTipo()) {
+            case EntradaDato.TIPO_NUMERO:
+                holder.txtEntradaDato.setInputType(InputType.TYPE_CLASS_NUMBER);
+                break;
+            case EntradaDato.TIPO_STRING:
+                holder.txtEntradaDato.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                break;
+        }
+
+
 
         //Listen when text is changed and update the ArrayList
         holder.txtEntradaDato.addTextChangedListener(new TextWatcher() {

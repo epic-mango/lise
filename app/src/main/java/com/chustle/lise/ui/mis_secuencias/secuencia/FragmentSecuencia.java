@@ -148,7 +148,8 @@ public class FragmentSecuencia extends Fragment {
         listaDatos.add(new EntradaDato(
                 getString(R.string.nombre),
                 "",
-                getString(R.string.ejemplo_pista_marcador)
+                getString(R.string.ejemplo_pista_marcador),
+                EntradaDato.TIPO_STRING
         ));
 
         DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {

@@ -72,8 +72,9 @@ public class FragmentMisSecuencias extends Fragment {
             public void onClick(View v) {
 
                 final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
-                listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia)));
-                listaDatos.add(new EntradaDato(getString(R.string.artista), "", getString(R.string.ejemplo_artista_secuencia)));
+                listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia),EntradaDato.TIPO_STRING));
+                listaDatos.add(new EntradaDato(getString(R.string.artista), "", getString(R.string.ejemplo_artista_secuencia), EntradaDato.TIPO_STRING));
+                listaDatos.add(new EntradaDato(getString(R.string.bpm), "", getString(R.string.ejemplo_numero), EntradaDato.TIPO_NUMERO));
 
 
                 //Create and show a dialog fragment to get the initial information of a sequence
@@ -85,11 +86,13 @@ public class FragmentMisSecuencias extends Fragment {
 
                         //Create a file on the device with the information from the dialog fragment
                         Secuencia secuencia = new Secuencia(
-                                new ArrayList<PistaMarcadores>(),
+
                                 listaDatos.get(0).getDato(),
                                 listaDatos.get(1).getDato(),
                                 Calendar.getInstance().getTimeInMillis(),
-                                Calendar.getInstance().getTimeInMillis());
+                                Calendar.getInstance().getTimeInMillis(),
+                                new ArrayList<PistaMarcadores>(),
+                                Integer.parseInt(listaDatos.get(2).getDato()));
 
                         files.guardarSecuencia(secuencia);
 

@@ -51,5 +51,6 @@
     <string name="agregar_marcador">Add Bookmark</string>
     <string name="error_nombre_vacio">The name can not be blank</string>
     <string name="error_compas">That bar doesn\'t exists</string>
+    <string name="bpm">Beats per minute</string>
 
 </resources>

@@ -5,22 +5,28 @@ import java.util.ArrayList;
 //This class represents al the data needed to a Sequence
 public class Secuencia {
 
-    //List of bookmarks
-    private ArrayList<PistaMarcadores> listaPistasMarcadores = new ArrayList<>();
 
     private String nombreSecuencia, artistaSecuencia;
     private long idSecuencia, versionSecuencia;
+
+    //List of bookmarks
+    private ArrayList<PistaMarcadores> listaPistasMarcadores;
+
+    //List of Tempos
+    private ArrayList<Tempo> listaTempos;
 
     public ArrayList<PistaMarcadores> getListaPistasMarcadores() {
         return listaPistasMarcadores;
     }
 
-    public Secuencia(ArrayList<PistaMarcadores> listaPistasMarcadores, String nombreSecuencia, String artistaSecuencia, long idSecuencia, long versionSecuencia) {
-        this.listaPistasMarcadores = listaPistasMarcadores;
+    public Secuencia(String nombreSecuencia, String artistaSecuencia, long idSecuencia, long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores, int tempoInicial) {
         this.nombreSecuencia = nombreSecuencia;
         this.artistaSecuencia = artistaSecuencia;
         this.idSecuencia = idSecuencia;
         this.versionSecuencia = versionSecuencia;
+        this.listaPistasMarcadores = listaPistasMarcadores;
+        this.listaTempos = new ArrayList<>();
+        this.listaTempos.add(new Tempo(1, false, tempoInicial, 4,4));
     }
 
     public void setListaPistasMarcadores(ArrayList<PistaMarcadores> listaPistasMarcadores) {
