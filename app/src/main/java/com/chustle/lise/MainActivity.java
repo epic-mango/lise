@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_settings:
 
 
@@ -99,15 +99,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-        return  false;
+        return false;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return navController.navigateUp();
     }
 
 

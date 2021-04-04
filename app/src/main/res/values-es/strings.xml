@@ -25,7 +25,7 @@
     <string name="cancelar">Cancelar</string>
     <string name="campos_vacios">Todos los campos son obligatorios</string>
     <string name="agregar_pista">Agregar pista</string>
-    <string name="guardar">Guardar</string>
+    <string name="guardar">Guardar los cambios</string>
     <string name="guardar_copia">Guardar una copia</string>
     <string name="marcadores">Marcadores</string>
     <string name="editar_marcador">Editar marcador</string>
@@ -52,4 +52,8 @@
     <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
     <string name="error_compas">Ese compás no existe</string>
     <string name="bpm">Pulsos por minuto</string>
+    <string name="guardar_preguntar">¿Salir sin guardar los cambios?</string>
+    <string name="no_guardar">No guardar</string>
+    <string name="no_salir">No salir</string>
+    <string name="guardado_correctamente">Guardado correctamente</string>
 </resources>

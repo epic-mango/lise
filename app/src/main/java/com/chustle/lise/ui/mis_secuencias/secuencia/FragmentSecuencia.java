@@ -8,11 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +39,7 @@ public class FragmentSecuencia extends Fragment {
     FileSecuencia files;
     RecyclerView rVPistas;
     ArrayList<Pista> listaPistas;
+    OnBackPressedCallback isSavedCallback;
 
     public FragmentSecuencia() {
         // Required empty public constructor
@@ -47,6 +51,7 @@ public class FragmentSecuencia extends Fragment {
 
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,13 +78,15 @@ public class FragmentSecuencia extends Fragment {
                 secuencia.getNombreSecuencia() + " - " +
                         secuencia.getArtistaSecuencia());
 
+        setHasOptionsMenu(true);
+
         inicializarComponentes(root);
 
 
         return root;
     }
 
-    private void inicializarComponentes(View root) {
+    private void inicializarComponentes(final View root) {
         //--------------RECYCLER VIEW PISTAS----------------------------------------------------
 
         rVPistas = root.findViewById(R.id.recyclerViewPistas_fragmentSecuencia);
@@ -89,6 +96,34 @@ public class FragmentSecuencia extends Fragment {
         listaPistas = secuencia.getListaPistas();
 
         rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager()));
+
+        //------------------- Handle Back button behaviour-----------------------------------------
+        isSavedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                dialog.setMessage(getString(R.string.guardar_preguntar));
+                dialog.setTitle(getString(R.string.menu_mis_secuencias));
+                dialog.setPositiveButton(getString(R.string.guardar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        guardar();
+                        Navigation.findNavController(root).navigateUp();
+                    }
+                });
+                dialog.setNegativeButton(getString(R.string.no_guardar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Navigation.findNavController(root).navigateUp();
+                    }
+                });
+                dialog.setNeutralButton(getString(R.string.no_salir), null);
+
+                dialog.show();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), isSavedCallback);
     }
 
     @Override
@@ -96,6 +131,22 @@ public class FragmentSecuencia extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         inflater.inflate(R.menu.menu_fragment_secuencia, menu);
+    }
+
+
+    private void guardar() {
+        //Escribimos la hora de guardado
+        //Write the saving time
+        secuencia.setVersionSecuencia(Calendar.getInstance().getTimeInMillis());
+
+        //Save the file
+        files.guardarSecuencia(secuencia);
+
+        //Mark as saved
+        isSavedCallback.setEnabled(false);
+
+        Toast.makeText(getContext(), getString(R.string.guardado_correctamente), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -106,13 +157,15 @@ public class FragmentSecuencia extends Fragment {
                 agregarPista();
                 return true;
             case R.id.mnu_guardar_fragmentSecuencia:
-
-                //Escribimos la hora de guardado
-                //Write the saving time
-                secuencia.setVersionSecuencia(Calendar.getInstance().getTimeInMillis());
-
-                files.guardarSecuencia(secuencia);
+                guardar();
                 return true;
+
+            //Handle UP Button (Navigation Back button)
+            case android.R.id.home:
+                if (isSavedCallback.isEnabled()) {
+                    isSavedCallback.handleOnBackPressed();
+                    return true;
+                } else break;
         }
         return false;
 
@@ -168,4 +221,6 @@ public class FragmentSecuencia extends Fragment {
 
         entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }
+
+
 }

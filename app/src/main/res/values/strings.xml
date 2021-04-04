@@ -25,7 +25,7 @@
     <string name="cancelar">Cancel</string>
     <string name="campos_vacios">All the fields are required</string>
     <string name="agregar_pista">New Track</string>
-    <string name="guardar">Save</string>
+    <string name="guardar">Save changes</string>
     <string name="guardar_copia">Save a copy</string>
     <string name="marcadores">Bookmarks</string>
     <string name="editar_marcador">Edit Bookmark</string>
@@ -52,5 +52,9 @@
     <string name="error_nombre_vacio">The name can not be blank</string>
     <string name="error_compas">That bar doesn\'t exists</string>
     <string name="bpm">Beats per minute</string>
+    <string name="guardar_preguntar">Exit whithout saving your changes?</string>
+    <string name="no_guardar">Don\'t save</string>
+    <string name="no_salir">Don\'t exit</string>
+    <string name="guardado_correctamente">Saved successfully</string>
 
 </resources>

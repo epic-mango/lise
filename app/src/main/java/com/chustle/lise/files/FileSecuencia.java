@@ -39,13 +39,9 @@ public class FileSecuencia extends Files {
             //Writer for the file
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileSecuencia, false));
 
-
-
-
             //Converting the JavaObject to JSON string
             //Convertimos el objeto java a una cadena JSON
             String secuenciaJSON = gson.toJson(secuencia);
-
 
             writer.write(secuenciaJSON);
             writer.close();
