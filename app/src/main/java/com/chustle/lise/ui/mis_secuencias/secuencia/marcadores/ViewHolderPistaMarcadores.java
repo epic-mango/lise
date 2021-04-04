@@ -1,5 +1,7 @@
 package com.chustle.lise.ui.mis_secuencias.secuencia.marcadores;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -72,7 +74,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
                     @Override
                     public void onAccept(Marcador marcador) {
                         listaMarcadores.add(marcador);
-                        recyclerViewMarcadores.getAdapter().notifyItemInserted(listaMarcadores.size()-1);
+                        recyclerViewMarcadores.getAdapter().notifyItemInserted(listaMarcadores.size() - 1);
                     }
                 });
                 dialog.show(supportFragmentManager, "EditarMarcador");
@@ -86,7 +88,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
 
     public void setInfoPistaMarcadores(PistaMarcadores infoPistaMarcadores) {
         this.infoPistaMarcadores = infoPistaMarcadores;
-        this.listaMarcadores  = infoPistaMarcadores.getListaMarcadores();
+        this.listaMarcadores = infoPistaMarcadores.getListaMarcadores();
         this.lblTituloPista.setText(infoPistaMarcadores.getTitulo());
         this.titulo = infoPistaMarcadores.getTitulo();
 
@@ -95,20 +97,55 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
         else
             contraer();
 
-        recyclerViewMarcadores.setAdapter(new AdapterListaMarcadores(listaMarcadores));
+        recyclerViewMarcadores.setAdapter(new AdapterListaMarcadores(listaMarcadores, new AdapterListaMarcadores.MarcadorListener() {
+            @Override
+            public void onClick(int position) {
+                //Edit bookmark
+
+
+                DialogFragmentEditarMarcador dialog = new DialogFragmentEditarMarcador(
+                        listaMarcadores.get(position), titulo, 1, 0, new DialogFragmentEditarMarcador.DialogFragmentEditarMarcadorListener() {
+                    @Override
+                    public void onAccept(Marcador marcador) {
+                        recyclerViewMarcadores.getAdapter().notifyItemChanged(listaMarcadores.indexOf(marcador));
+                    }
+                });
+                dialog.show(supportFragmentManager, "EditarMarcador");
+            }
+
+            @Override
+            public void onLongClick(final int position) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+                alert.setTitle(itemView.getResources().getString(R.string.marcadores));
+                alert.setMessage(itemView.getResources().getString(R.string.eliminar_marcador));
+                alert.setPositiveButton(itemView.getResources().getString(R.string.eliminar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listaMarcadores.remove(position);
+                        recyclerViewMarcadores.getAdapter().notifyItemRemoved(position);
+
+
+                    }
+                });
+
+                alert.setNegativeButton(itemView.getResources().getString(R.string.cancelar), null);
+
+                alert.show();
+            }
+        }));
     }
 
     private void expandir() {
         recyclerViewMarcadores.setVisibility(View.VISIBLE);
         layoutAgregarMarcador.setVisibility(View.VISIBLE);
-
+        infoPistaMarcadores.setExpandido(true);
         this.expandido = true;
     }
 
     private void contraer() {
         recyclerViewMarcadores.setVisibility(View.GONE);
         layoutAgregarMarcador.setVisibility(View.GONE);
-
+        infoPistaMarcadores.setExpandido(false);
         this.expandido = false;
     }
 }

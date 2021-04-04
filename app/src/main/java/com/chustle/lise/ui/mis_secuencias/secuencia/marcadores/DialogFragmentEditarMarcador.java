@@ -125,6 +125,8 @@ public class DialogFragmentEditarMarcador extends DialogFragment {
         setCorrector(txtSegundo, 1, listaEdits);
         setCorrector(txtMinuto, 2, listaEdits);
         setCorrector(txtHora, 3, listaEdits);
+
+
         //------------Buttons-----------------------------------------------------------------------
 
         btnAceptar = root.findViewById(R.id.btnAceptar_dialogFragmentEditarMarcador);
@@ -180,10 +182,11 @@ public class DialogFragmentEditarMarcador extends DialogFragment {
 
         if (marcador != null) {
             //When editing:
-            if (marcador.isTiempo())
-                txtMilisegundo.setText(marcador.getInicio());
+            if (marcador.isTiempo()){
+                txtMilisegundo.setText(marcador.getInicio()+"");
+                setTextCorregido(listaEdits, 0);}
             else
-                txtCompasInicio.setText(marcador.getInicio());
+                txtCompasInicio.setText(marcador.getInicio()+"");
         } else {
 
             //When creating:
@@ -218,7 +221,7 @@ public class DialogFragmentEditarMarcador extends DialogFragment {
 
 
             //por compas
-            if (Integer.parseInt(txtCompasInicio.getText().toString()) < 1) {
+            if (txtCompasInicio.getText().toString().equals("") || Integer.parseInt(txtCompasInicio.getText().toString()) < 1) {
                 Toast.makeText(getContext(), getResources().getString(R.string.error_compas), Toast.LENGTH_SHORT).show();
                 return false;
             }

@@ -56,5 +56,7 @@
     <string name="no_guardar">Don\'t save</string>
     <string name="no_salir">Don\'t exit</string>
     <string name="guardado_correctamente">Saved successfully</string>
+    <string name="eliminar_marcador">Delete bookmark?</string>
+    <string name="eliminar">Delete</string>
 
 </resources>

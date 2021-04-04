@@ -10,7 +10,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
@@ -72,7 +71,7 @@ public class FragmentMisSecuencias extends Fragment {
             public void onClick(View v) {
 
                 final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
-                listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia),EntradaDato.TIPO_STRING));
+                listaDatos.add(new EntradaDato(getString(R.string.nombre), "", getString(R.string.ejemplo_nombre_secuencia), EntradaDato.TIPO_STRING));
                 listaDatos.add(new EntradaDato(getString(R.string.artista), "", getString(R.string.ejemplo_artista_secuencia), EntradaDato.TIPO_STRING));
                 listaDatos.add(new EntradaDato(getString(R.string.bpm), "", getString(R.string.ejemplo_numero), EntradaDato.TIPO_NUMERO));
 
@@ -85,14 +84,13 @@ public class FragmentMisSecuencias extends Fragment {
                     public void aceptar() {
 
                         //Create a file on the device with the information from the dialog fragment
-                        Secuencia secuencia = new Secuencia(
-
-                                listaDatos.get(0).getDato(),
+                        Secuencia secuencia = new Secuencia(listaDatos.get(0).getDato(),
                                 listaDatos.get(1).getDato(),
                                 Calendar.getInstance().getTimeInMillis(),
                                 Calendar.getInstance().getTimeInMillis(),
                                 new ArrayList<PistaMarcadores>(),
                                 Integer.parseInt(listaDatos.get(2).getDato()));
+
 
                         files.guardarSecuencia(secuencia);
 

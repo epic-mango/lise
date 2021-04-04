@@ -20,6 +20,10 @@ public class PistaMarcadores extends Pista {
         return titulo;
     }
 
+    public void setExpandido(boolean expandido){
+        super.expandido = expandido;
+    }
+
     public ArrayList<Marcador> getListaMarcadores() {
         return listaMarcadores;
     }

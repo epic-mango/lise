@@ -56,4 +56,6 @@
     <string name="no_guardar">No guardar</string>
     <string name="no_salir">No salir</string>
     <string name="guardado_correctamente">Guardado correctamente</string>
+    <string name="eliminar_marcador">¿Eliminar marcador?</string>
+    <string name="eliminar">Eliminar</string>
 </resources>
