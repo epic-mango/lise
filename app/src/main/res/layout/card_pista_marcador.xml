@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCabecera_CardPistaMarcador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rect"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_bookmark" />
+
+        <TextView
+            android:id="@+id/lblTituloPista_CardPistaMarcador"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:text="@string/marcadores"/>
+
+        <TextView
+            android:id="@+id/txtMarcadorActual_CardPistaMarcador"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:background="@drawable/shape_round_rect"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="Marcador Actual" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_movement"
+            android:paddingHorizontal="8dp"/>
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMarcadores_cardPistaMarcador"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCabecera_CardPistaMarcador" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAgregarMarcador_CardPistaMarcador"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="12"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewMarcadores_cardPistaMarcador">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="11"
+            android:gravity="right|center_vertical"
+            android:text="@string/agregar_marcador" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_add_black" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

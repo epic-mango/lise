@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         final NavigationView navigationView = findViewById(R.id.nav_view);
 
         // Debes incluir cada uno de los destinos de alto nivel en esta lista
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_dst_mis_secuencias, R.id.nav_dst_listas)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_dst_mis_secuencias,
+                R.id.nav_dst_listas)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -75,21 +77,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+
+
+                return true;
+        }
+
+
+        return false;
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return navController.navigateUp();
     }
 
 
