@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chustle.lise.R;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.mis_secuencias.secuencia.FragmentSecuencia;
+;
 
 import java.util.ArrayList;
 
 public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
 
-    FragmentSecuencia.SecuenciaChangedListener listener;
+    Secuencia.SecuenciaChangedListener listener;
     RecyclerView recyclerViewMarcadores;
     PistaMarcadores infoPistaMarcadores;
     ArrayList<Marcador> listaMarcadores;
@@ -32,7 +34,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
     private boolean expandido;
     private String titulo;
 
-    public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager, FragmentSecuencia.SecuenciaChangedListener listener) {
+    public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager, Secuencia.SecuenciaChangedListener listener) {
         super(v);
         this.supportFragmentManager = supportFragmentManager;
         this.listener = listener;

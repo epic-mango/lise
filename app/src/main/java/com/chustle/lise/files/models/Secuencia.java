@@ -5,6 +5,10 @@ import java.util.ArrayList;
 //This class represents al the data needed to a Sequence
 public class Secuencia {
 
+    public interface SecuenciaChangedListener {
+        void onChange();
+    }
+
 
     private String nombreSecuencia, artistaSecuencia;
     private long idSecuencia, versionSecuencia;

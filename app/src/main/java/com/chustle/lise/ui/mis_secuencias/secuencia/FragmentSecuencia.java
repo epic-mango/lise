@@ -32,7 +32,10 @@ import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class FragmentSecuencia extends Fragment {
+
+
+public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaChangedListener{
+
 
     //Objects
     Secuencia secuencia;
@@ -84,7 +87,6 @@ public class FragmentSecuencia extends Fragment {
         inicializarComponentes(root);
 
 
-
         return root;
     }
 
@@ -98,13 +100,7 @@ public class FragmentSecuencia extends Fragment {
         listaPistas = secuencia.getListaPistas();
 
 
-        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager(), new SecuenciaChangedListener() {
-            @Override
-            public void onChange() {
-                isSavedCallback.setEnabled(true);
-                mnuGuardar.setVisible(true);
-            }
-        }));
+        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager(), this));
 
         //------------------- Handle Back button behaviour-----------------------------------------
         isSavedCallback = new OnBackPressedCallback(false) {
@@ -159,7 +155,7 @@ public class FragmentSecuencia extends Fragment {
 
         Toast.makeText(getContext(), getString(R.string.guardado_correctamente), Toast.LENGTH_SHORT).show();
 
-        mnuGuardar .setVisible(false);
+        mnuGuardar.setVisible(false);
     }
 
     @Override
@@ -229,13 +225,17 @@ public class FragmentSecuencia extends Fragment {
                 int index = listaPistas.indexOf(pistaMarcadores);
                 rVPistas.getAdapter().notifyItemInserted(index);
 
+                onChange();
             }
         }, getString(R.string.nueva_pista_marcadores), listaDatos);
 
         entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }
 
-    public interface SecuenciaChangedListener {
-        void onChange();
+
+    @Override
+    public void onChange() {
+        mnuGuardar.setVisible(true);
+        isSavedCallback.setEnabled(true);
     }
 }
