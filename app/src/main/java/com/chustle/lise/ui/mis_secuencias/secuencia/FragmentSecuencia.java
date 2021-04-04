@@ -40,6 +40,7 @@ public class FragmentSecuencia extends Fragment {
     RecyclerView rVPistas;
     ArrayList<Pista> listaPistas;
     OnBackPressedCallback isSavedCallback;
+    MenuItem mnuGuardar;
 
     public FragmentSecuencia() {
         // Required empty public constructor
@@ -83,6 +84,7 @@ public class FragmentSecuencia extends Fragment {
         inicializarComponentes(root);
 
 
+
         return root;
     }
 
@@ -95,10 +97,17 @@ public class FragmentSecuencia extends Fragment {
 
         listaPistas = secuencia.getListaPistas();
 
-        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager()));
+
+        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager(), new SecuenciaChangedListener() {
+            @Override
+            public void onChange() {
+                isSavedCallback.setEnabled(true);
+                mnuGuardar.setVisible(true);
+            }
+        }));
 
         //------------------- Handle Back button behaviour-----------------------------------------
-        isSavedCallback = new OnBackPressedCallback(true) {
+        isSavedCallback = new OnBackPressedCallback(false) {
             @Override
             public void handleOnBackPressed() {
 
@@ -131,6 +140,9 @@ public class FragmentSecuencia extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         inflater.inflate(R.menu.menu_fragment_secuencia, menu);
+
+        mnuGuardar = menu.findItem(R.id.mnu_guardar_fragmentSecuencia);
+        mnuGuardar.setVisible(false);
     }
 
 
@@ -147,6 +159,7 @@ public class FragmentSecuencia extends Fragment {
 
         Toast.makeText(getContext(), getString(R.string.guardado_correctamente), Toast.LENGTH_SHORT).show();
 
+        mnuGuardar .setVisible(false);
     }
 
     @Override
@@ -222,5 +235,7 @@ public class FragmentSecuencia extends Fragment {
         entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }
 
-
+    public interface SecuenciaChangedListener {
+        void onChange();
+    }
 }

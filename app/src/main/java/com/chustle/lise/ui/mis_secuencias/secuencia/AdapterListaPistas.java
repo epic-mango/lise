@@ -27,8 +27,10 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
     private List<Pista> listaPistas;
 
     FragmentManager supportFragmentManager;
+    FragmentSecuencia.SecuenciaChangedListener listener;
 
-    public AdapterListaPistas(List<Pista> listaPistas, FragmentManager supportFragmentManager) {
+    public AdapterListaPistas(List<Pista> listaPistas, FragmentManager supportFragmentManager, FragmentSecuencia.SecuenciaChangedListener listener) {
+        this.listener = listener;
         this.listaPistas = listaPistas;
         this.supportFragmentManager =supportFragmentManager;
     }
@@ -42,7 +44,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
         switch (viewType) {
             case CLASE_MARCADOR:
                 return new ViewHolderPistaMarcadores(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_pista_marcador, parent,
-                        false), supportFragmentManager);
+                        false), supportFragmentManager, listener);
             default:
                 return null;
 
