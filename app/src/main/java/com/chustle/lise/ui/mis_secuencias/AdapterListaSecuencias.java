@@ -80,7 +80,7 @@ public class AdapterListaSecuencias extends
                 @Override
                 public boolean onLongClick(View v) {
                     listener.onLongClic(getAdapterPosition());
-                    return false;
+                    return true;
                 }
             });
 

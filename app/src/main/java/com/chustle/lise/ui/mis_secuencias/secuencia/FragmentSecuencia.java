@@ -137,6 +137,7 @@ public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaC
 
         inflater.inflate(R.menu.menu_fragment_secuencia, menu);
 
+        //--------------------------------Inicializar Menu guardar---------------------------------------------
         mnuGuardar = menu.findItem(R.id.mnu_guardar_fragmentSecuencia);
         mnuGuardar.setVisible(false);
     }
@@ -152,10 +153,10 @@ public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaC
 
         //Mark as saved
         isSavedCallback.setEnabled(false);
+        mnuGuardar.setVisible(false);
 
         Toast.makeText(getContext(), getString(R.string.guardado_correctamente), Toast.LENGTH_SHORT).show();
 
-        mnuGuardar.setVisible(false);
     }
 
     @Override
