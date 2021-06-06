@@ -32,7 +32,10 @@ import com.chustle.lise.ui.mis_secuencias.ListModelSecuencias;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class FragmentSecuencia extends Fragment {
+
+
+public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaChangedListener{
+
 
     //Objects
     Secuencia secuencia;
@@ -40,6 +43,7 @@ public class FragmentSecuencia extends Fragment {
     RecyclerView rVPistas;
     ArrayList<Pista> listaPistas;
     OnBackPressedCallback isSavedCallback;
+    MenuItem mnuGuardar;
 
     public FragmentSecuencia() {
         // Required empty public constructor
@@ -86,6 +90,7 @@ public class FragmentSecuencia extends Fragment {
         return root;
     }
 
+
     private void inicializarComponentes(final View root) {
         //--------------RECYCLER VIEW PISTAS----------------------------------------------------
 
@@ -94,11 +99,11 @@ public class FragmentSecuencia extends Fragment {
         rVPistas.setLayoutManager(new LinearLayoutManager(getContext()));
 
         listaPistas = secuencia.getListaPistas();
-
-        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager()));
+        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity()
+                .getSupportFragmentManager(), this));
 
         //------------------- Handle Back button behaviour-----------------------------------------
-        isSavedCallback = new OnBackPressedCallback(true) {
+        isSavedCallback = new OnBackPressedCallback(false) {
             @Override
             public void handleOnBackPressed() {
 
@@ -131,6 +136,10 @@ public class FragmentSecuencia extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         inflater.inflate(R.menu.menu_fragment_secuencia, menu);
+
+        //--------------------------------Inicializar Menu guardar---------------------------------------------
+        mnuGuardar = menu.findItem(R.id.mnu_guardar_fragmentSecuencia);
+        mnuGuardar.setVisible(false);
     }
 
 
@@ -144,6 +153,7 @@ public class FragmentSecuencia extends Fragment {
 
         //Mark as saved
         isSavedCallback.setEnabled(false);
+        mnuGuardar.setVisible(false);
 
         Toast.makeText(getContext(), getString(R.string.guardado_correctamente), Toast.LENGTH_SHORT).show();
 
@@ -216,6 +226,7 @@ public class FragmentSecuencia extends Fragment {
                 int index = listaPistas.indexOf(pistaMarcadores);
                 rVPistas.getAdapter().notifyItemInserted(index);
 
+                onChange();
             }
         }, getString(R.string.nueva_pista_marcadores), listaDatos);
 
@@ -223,4 +234,9 @@ public class FragmentSecuencia extends Fragment {
     }
 
 
+    @Override
+    public void onChange() {
+        mnuGuardar.setVisible(true);
+        isSavedCallback.setEnabled(true);
+    }
 }

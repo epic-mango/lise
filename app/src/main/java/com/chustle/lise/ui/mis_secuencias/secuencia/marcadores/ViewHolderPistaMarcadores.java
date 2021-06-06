@@ -14,11 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chustle.lise.R;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.Secuencia;
+import com.chustle.lise.ui.mis_secuencias.secuencia.FragmentSecuencia;
+;
 
 import java.util.ArrayList;
 
 public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
 
+    Secuencia.SecuenciaChangedListener listener;
     RecyclerView recyclerViewMarcadores;
     PistaMarcadores infoPistaMarcadores;
     ArrayList<Marcador> listaMarcadores;
@@ -28,13 +32,12 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
     private TextView lblMarcadorActual,
             lblTituloPista;
     private boolean expandido;
-
     private String titulo;
 
-
-    public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager) {
+    public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager, Secuencia.SecuenciaChangedListener listener) {
         super(v);
         this.supportFragmentManager = supportFragmentManager;
+        this.listener = listener;
         inicializarComponentes(v);
     }
 
@@ -49,6 +52,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
         layoutCabecera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listener.onChange();
                 if (expandido)
                     contraer();
                 else
@@ -75,6 +79,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
                     public void onAccept(Marcador marcador) {
                         listaMarcadores.add(marcador);
                         recyclerViewMarcadores.getAdapter().notifyItemInserted(listaMarcadores.size() - 1);
+                        listener.onChange();
                     }
                 });
                 dialog.show(supportFragmentManager, "EditarMarcador");
@@ -101,13 +106,12 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
             @Override
             public void onClick(int position) {
                 //Edit bookmark
-
-
                 DialogFragmentEditarMarcador dialog = new DialogFragmentEditarMarcador(
                         listaMarcadores.get(position), titulo, 1, 0, new DialogFragmentEditarMarcador.DialogFragmentEditarMarcadorListener() {
                     @Override
                     public void onAccept(Marcador marcador) {
                         recyclerViewMarcadores.getAdapter().notifyItemChanged(listaMarcadores.indexOf(marcador));
+                        listener.onChange();
                     }
                 });
                 dialog.show(supportFragmentManager, "EditarMarcador");
@@ -123,8 +127,7 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
                     public void onClick(DialogInterface dialog, int which) {
                         listaMarcadores.remove(position);
                         recyclerViewMarcadores.getAdapter().notifyItemRemoved(position);
-
-
+                        listener.onChange();
                     }
                 });
 
@@ -148,4 +151,6 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
         infoPistaMarcadores.setExpandido(false);
         this.expandido = false;
     }
+
+
 }

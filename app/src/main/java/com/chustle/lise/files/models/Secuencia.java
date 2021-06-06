@@ -5,6 +5,10 @@ import java.util.ArrayList;
 //This class represents al the data needed to a Sequence
 public class Secuencia {
 
+    //Usada por el fragmentSecuencia para notificar que se han hecho cambios
+    public interface SecuenciaChangedListener {
+        void onChange();
+    }
 
     private String nombreSecuencia, artistaSecuencia;
     private long idSecuencia, versionSecuencia;
@@ -26,7 +30,7 @@ public class Secuencia {
         this.versionSecuencia = versionSecuencia;
         this.listaPistasMarcadores = listaPistasMarcadores;
         this.listaTempos = new ArrayList<>();
-        this.listaTempos.add(new Tempo(1, false, tempoInicial, 4,4));
+        this.listaTempos.add(new Tempo(1, tempoInicial, 4,4));
     }
 
     public void setListaPistasMarcadores(ArrayList<PistaMarcadores> listaPistasMarcadores) {
@@ -41,7 +45,8 @@ public class Secuencia {
         this.versionSecuencia = versionSecuencia;
     }
 
-    //This method returns the information from the File asocciated to this Sequence instance, but
+
+    //This method returns the information from the File associated to this Sequence instance, but
     //orders it as the user wanted and saved in the file
     public ArrayList<Pista> getListaPistas() {
         ArrayList<Pista> listaPistas = new ArrayList<>();

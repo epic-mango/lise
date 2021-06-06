@@ -68,4 +68,9 @@ public class FileSecuencia extends Files {
         }
     }
 
+    public boolean eliminarSecuencia(String nombre){
+        File fileSecuencia = new File(FILES_DIR, nombre);
+        return fileSecuencia.delete();
+    }
+
 }

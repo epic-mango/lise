@@ -28,10 +28,14 @@ public class AdapterListaSecuencias extends
     }
 
     @Override
-    public ViewHolderListaSecuencias onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_secuencia, parent,
+    public ViewHolderListaSecuencias onCreateViewHolder(ViewGroup parent,
+                                                        int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_secuencia, parent,
                 false);
-        ViewHolderListaSecuencias viewHolder = new ViewHolderListaSecuencias(v, listener);
+
+        ViewHolderListaSecuencias viewHolder = new ViewHolderListaSecuencias(v,
+                listener);
         return viewHolder;
     }
 
@@ -63,7 +67,8 @@ public class AdapterListaSecuencias extends
         private TextView artistaSecuencia;
 
 
-        public ViewHolderListaSecuencias(View v, final AdapterListaSecuencias.SecuenciasAdapterListener listener) {
+        public ViewHolderListaSecuencias(View v,
+                                         final AdapterListaSecuencias.SecuenciasAdapterListener listener) {
             super(v);
             nombreSecuencia = (TextView) v.findViewById(R.id.lblNombreSecuencia);
             artistaSecuencia = (TextView) v.findViewById(R.id.lblArtistaSecuencia);
@@ -80,13 +85,11 @@ public class AdapterListaSecuencias extends
                 @Override
                 public boolean onLongClick(View v) {
                     listener.onLongClic(getAdapterPosition());
-                    return false;
+                    return true;
                 }
             });
 
         }
-
-
     }
 
 }

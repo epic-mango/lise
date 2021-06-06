@@ -58,4 +58,6 @@
     <string name="guardado_correctamente">Guardado correctamente</string>
     <string name="eliminar_marcador">¿Eliminar marcador?</string>
     <string name="eliminar">Eliminar</string>
+    <string name="eliminar_preguntar">¿Deseas eliminar este elemento?</string>
+    <string name="eliminado_completo">Eliminado correctamente</string>
 </resources>

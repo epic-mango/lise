@@ -1,9 +1,12 @@
 package com.chustle.lise.ui.mis_secuencias;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -27,6 +30,7 @@ import java.util.List;
 public class FragmentMisSecuencias extends Fragment {
 
     FileSecuencia files;
+    RecyclerView rVSecuencias;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -38,17 +42,18 @@ public class FragmentMisSecuencias extends Fragment {
         return root;
     }
 
-
     private void inicializarComponentes(View root) {
 
         //Recycler View secuencias--------------------------------------------------------------------------
 
-        final RecyclerView rVSecuencias = root.findViewById(R.id.listaSecuencias);
+        rVSecuencias = root.findViewById(R.id.listaSecuencias);
         rVSecuencias.setHasFixedSize(true);
         rVSecuencias.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuenciasListModel();
-        rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {
+
+        rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias,
+                new AdapterListaSecuencias.SecuenciasAdapterListener() {
             @Override
             public void onClic(int position) {
 
@@ -58,8 +63,27 @@ public class FragmentMisSecuencias extends Fragment {
             }
 
             @Override
-            public void onLongClic(int position) {
-                ListModelSecuencias clicada = modelosListaSecuencias.get(position);
+            public void onLongClic(final int position) {
+                final ListModelSecuencias clicada = modelosListaSecuencias.get(position);
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                alert.setTitle(getString(R.string.eliminar) + " " + clicada.getNombreSecuencia());
+                alert.setMessage(getString(R.string.eliminar_preguntar));
+                alert.setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (files.eliminarSecuencia(clicada.getRutaArchivo())) {
+                            modelosListaSecuencias.remove(position);
+                            rVSecuencias.getAdapter().notifyItemRemoved(position);
+                            Toast.makeText(getContext(), getString(R.string.eliminado_completo), Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                });
+
+                alert.setNegativeButton(getString(R.string.cancelar), null);
+                alert.show();
             }
         }));
 
