@@ -10,7 +10,8 @@ public class PistaMarcadores extends Pista {
 
     ArrayList<Marcador> listaMarcadores;
 
-    public PistaMarcadores(int indice, boolean expandido, String titulo, ArrayList<Marcador> listaMarcadores) {
+    public PistaMarcadores(int indice, boolean expandido, String titulo,
+                           ArrayList<Marcador> listaMarcadores) {
         super(indice, expandido);
         this.titulo = titulo;
         this.listaMarcadores = listaMarcadores;

@@ -51,7 +51,9 @@ public class FragmentMisSecuencias extends Fragment {
         rVSecuencias.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         final List<ListModelSecuencias> modelosListaSecuencias = files.getSecuenciasListModel();
-        rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias, new AdapterListaSecuencias.SecuenciasAdapterListener() {
+
+        rVSecuencias.setAdapter(new AdapterListaSecuencias(modelosListaSecuencias,
+                new AdapterListaSecuencias.SecuenciasAdapterListener() {
             @Override
             public void onClic(int position) {
 

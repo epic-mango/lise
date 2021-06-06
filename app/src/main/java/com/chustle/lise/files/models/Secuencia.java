@@ -30,7 +30,7 @@ public class Secuencia {
         this.versionSecuencia = versionSecuencia;
         this.listaPistasMarcadores = listaPistasMarcadores;
         this.listaTempos = new ArrayList<>();
-        this.listaTempos.add(new Tempo(1, false, tempoInicial, 4,4));
+        this.listaTempos.add(new Tempo(1, tempoInicial, 4,4));
     }
 
     public void setListaPistasMarcadores(ArrayList<PistaMarcadores> listaPistasMarcadores) {
@@ -45,7 +45,8 @@ public class Secuencia {
         this.versionSecuencia = versionSecuencia;
     }
 
-    //This method returns the information from the File asocciated to this Sequence instance, but
+
+    //This method returns the information from the File associated to this Sequence instance, but
     //orders it as the user wanted and saved in the file
     public ArrayList<Pista> getListaPistas() {
         ArrayList<Pista> listaPistas = new ArrayList<>();

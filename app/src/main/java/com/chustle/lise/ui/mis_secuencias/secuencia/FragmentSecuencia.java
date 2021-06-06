@@ -90,6 +90,7 @@ public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaC
         return root;
     }
 
+
     private void inicializarComponentes(final View root) {
         //--------------RECYCLER VIEW PISTAS----------------------------------------------------
 
@@ -98,9 +99,8 @@ public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaC
         rVPistas.setLayoutManager(new LinearLayoutManager(getContext()));
 
         listaPistas = secuencia.getListaPistas();
-
-
-        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity().getSupportFragmentManager(), this));
+        rVPistas.setAdapter(new AdapterListaPistas(listaPistas, getActivity()
+                .getSupportFragmentManager(), this));
 
         //------------------- Handle Back button behaviour-----------------------------------------
         isSavedCallback = new OnBackPressedCallback(false) {
