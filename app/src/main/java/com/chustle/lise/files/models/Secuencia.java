@@ -8,6 +8,7 @@ public class Secuencia {
     //Usada por el fragmentSecuencia para notificar que se han hecho cambios
     public interface SecuenciaChangedListener {
         void onChange();
+        void onLongClicPista(int pistaPosition, int tipoPista );
     }
 
     private String nombreSecuencia, artistaSecuencia;

@@ -16,22 +16,22 @@ import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.mis_secuencias.secuencia.FragmentSecuencia;
+import com.chustle.lise.ui.mis_secuencias.secuencia.ViewHolderPista;
 ;
 
 import java.util.ArrayList;
 
-public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
+public class ViewHolderPistaMarcadores extends ViewHolderPista {
 
-    Secuencia.SecuenciaChangedListener listener;
+
     RecyclerView recyclerViewMarcadores;
     PistaMarcadores infoPistaMarcadores;
     ArrayList<Marcador> listaMarcadores;
     FragmentManager supportFragmentManager;
-    private LinearLayout layoutCabecera,
-            layoutAgregarMarcador;
+    private LinearLayout layoutAgregarMarcador;
     private TextView lblMarcadorActual,
             lblTituloPista;
-    private boolean expandido;
+
     private String titulo;
 
     public ViewHolderPistaMarcadores(@NonNull final View v, FragmentManager supportFragmentManager, Secuencia.SecuenciaChangedListener listener) {
@@ -43,23 +43,12 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
 
     public void inicializarComponentes(final View root) {
         recyclerViewMarcadores = root.findViewById(R.id.recyclerViewMarcadores_cardPistaMarcador);
-        layoutCabecera = root.findViewById(R.id.linearLayoutCabecera_CardPistaMarcador);
+
         layoutAgregarMarcador = root.findViewById(R.id.linearLayoutAgregarMarcador_CardPistaMarcador);
         lblMarcadorActual = root.findViewById(R.id.txtMarcadorActual_CardPistaMarcador);
         lblTituloPista = root.findViewById(R.id.lblTituloPista_CardPistaMarcador);
 
-        //Alternate the expansion of the components-------------------------------------------------
-        layoutCabecera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onChange();
-                if (expandido)
-                    contraer();
-                else
-                    expandir();
 
-            }
-        });
 
         //-----------------------------------------Recycler view------------------------------------
 
@@ -138,14 +127,16 @@ public class ViewHolderPistaMarcadores extends RecyclerView.ViewHolder {
         }));
     }
 
-    private void expandir() {
+    @Override
+    public void expandir() {
         recyclerViewMarcadores.setVisibility(View.VISIBLE);
         layoutAgregarMarcador.setVisibility(View.VISIBLE);
         infoPistaMarcadores.setExpandido(true);
         this.expandido = true;
     }
 
-    private void contraer() {
+    @Override
+    public void contraer() {
         recyclerViewMarcadores.setVisibility(View.GONE);
         layoutAgregarMarcador.setVisibility(View.GONE);
         infoPistaMarcadores.setExpandido(false);

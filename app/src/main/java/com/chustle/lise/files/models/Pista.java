@@ -2,6 +2,8 @@ package com.chustle.lise.files.models;
 
 //This class represents a Track of a Sequence (Secuencia)
 public class Pista {
+
+    String titulo;
     int indice;
     boolean expandido;
 
@@ -14,4 +16,5 @@ public class Pista {
         return expandido;
     }
 
+    public String getTitulo(){return titulo;}
 }

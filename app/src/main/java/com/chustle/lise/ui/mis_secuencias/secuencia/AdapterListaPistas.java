@@ -17,7 +17,7 @@ import com.chustle.lise.ui.mis_secuencias.secuencia.marcadores.ViewHolderPistaMa
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterListaPistas extends RecyclerView.Adapter<ViewHolderPista> {
 
 
 
@@ -39,7 +39,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderPista onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //Switch between view types to inflate the right layout
 
@@ -71,7 +71,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderPista holder, int position) {
 
 
 

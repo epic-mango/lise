@@ -1,5 +1,7 @@
 package com.chustle.lise.ui.mis_secuencias.secuencia;
 
+import static com.chustle.lise.ui.mis_secuencias.secuencia.AdapterListaPistas.CLASE_MARCADOR;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,8 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-
-public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaChangedListener{
+public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaChangedListener {
 
 
     //Objects
@@ -238,5 +239,30 @@ public class FragmentSecuencia extends Fragment  implements Secuencia.SecuenciaC
     public void onChange() {
         mnuGuardar.setVisible(true);
         isSavedCallback.setEnabled(true);
+    }
+
+    @Override
+    public void onLongClicPista(int pistaPosition, int tipoPista) {
+        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(getContext());
+        alert.setTitle(getString(R.string.eliminar) + " " + listaPistas.get(pistaPosition).getTitulo());
+        alert.setMessage(getString(R.string.eliminar_preguntar));
+        alert.setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (tipoPista == CLASE_MARCADOR)
+                    secuencia.getListaPistasMarcadores().remove(listaPistas.get(pistaPosition));
+
+                //TODO: Agregar los diferentes tipos de pistas para que se eliminen correctamente
+
+                listaPistas.remove(pistaPosition);
+                rVPistas.getAdapter().notifyItemRemoved(pistaPosition);
+
+                onChange();
+
+            }
+        });
+
+        alert.setNegativeButton(getString(R.string.cancelar), null);
+        alert.show();
     }
 }

@@ -6,7 +6,6 @@ import java.util.List;
 //This class extends a Track of type Bookmark
 public class PistaMarcadores extends Pista {
 
-    String titulo;
 
     ArrayList<Marcador> listaMarcadores;
 
