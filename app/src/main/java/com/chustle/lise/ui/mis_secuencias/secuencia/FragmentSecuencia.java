@@ -263,6 +263,46 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
         });
 
         alert.setNegativeButton(getString(R.string.cancelar), null);
+
+        alert.setNeutralButton(getString((R.string.renombrar)), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+                listaDatos.add(new EntradaDato(
+                        getString(R.string.nombre),
+                        "",
+                        getString(R.string.ejemplo_pista_marcador),
+                        EntradaDato.TIPO_STRING
+                ));
+
+                DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
+                    @Override
+                    public void aceptar() {
+
+                        Pista pistaMarcadores = listaPistas.get(pistaPosition);
+
+                        String titulo = listaDatos.get(0).getDato();
+                        pistaMarcadores.setTitulo(titulo);
+
+                        int index = listaPistas.indexOf(pistaMarcadores);
+                        if (tipoPista == CLASE_MARCADOR) {
+                            secuencia.getListaPistasMarcadores().get(secuencia.getListaPistasMarcadores().indexOf(pistaMarcadores)).setTitulo(titulo);
+                        }
+
+                        //TODO:Agregar los otros tipos de pistas
+
+                        rVPistas.getAdapter().notifyItemChanged(index);
+
+                        onChange();
+                    }
+                }, getString(R.string.nueva_pista_marcadores), listaDatos);
+
+                entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
+
+            }
+        });
         alert.show();
     }
 }

@@ -60,5 +60,6 @@
     <string name="eliminar">Delete</string>
     <string name="eliminar_preguntar">Do you want to delete this element?</string>
     <string name="eliminado_completo">Deleted successfully</string>
+    <string name="renombrar">Rename</string>
 
 </resources>
