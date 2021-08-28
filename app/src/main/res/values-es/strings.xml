@@ -61,4 +61,7 @@
     <string name="eliminar_preguntar">¿Deseas eliminar este elemento?</string>
     <string name="eliminado_completo">Eliminado correctamente</string>
     <string name="renombrar">Renombrar</string>
+    <string name="ejemplo_texto">Cualquier texto</string>
+    <string name="metrica_compas">Métrica de tiempo</string>
+    <string name="agregar_pulso">Añadir Pulso</string>
 </resources>

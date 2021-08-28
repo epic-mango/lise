@@ -273,7 +273,7 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
                 listaDatos.add(new EntradaDato(
                         getString(R.string.nombre),
                         "",
-                        getString(R.string.ejemplo_pista_marcador),
+                        getString(R.string.ejemplo_texto),
                         EntradaDato.TIPO_STRING
                 ));
 
@@ -297,7 +297,7 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
 
                         onChange();
                     }
-                }, getString(R.string.nueva_pista_marcadores), listaDatos);
+                }, getString(R.string.renombrar), listaDatos);
 
                 entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
 

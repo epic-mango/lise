@@ -15,7 +15,6 @@ import com.chustle.lise.R;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
-import com.chustle.lise.ui.mis_secuencias.secuencia.FragmentSecuencia;
 import com.chustle.lise.ui.mis_secuencias.secuencia.ViewHolderPista;
 ;
 

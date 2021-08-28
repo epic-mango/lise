@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linearLayoutCabecera_CardPistaMarcador"
+        android:id="@+id/linearLayoutCabecera_CardPistaPulsos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_rect"
@@ -20,26 +21,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingVertical="4dp"
-            app:srcCompat="@drawable/ic_bookmark" />
+            app:srcCompat="@drawable/ic_pulsos" />
 
         <TextView
-            android:id="@+id/lblTituloPista_CardPistaMarcador"
+            android:id="@+id/lblTituloPista_CardPistaPulsos"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center_vertical"
-            android:text="@string/marcadores"/>
+            android:text="@string/pulsos"/>
 
-        <TextView
-            android:id="@+id/txtMarcadorActual_CardPistaMarcador"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@drawable/shape_round_rect"
-            android:gravity="center"
-            android:padding="3dp"
-            android:layout_marginStart="2dp"
-            android:text="Marcador Actual" />
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,12 +45,35 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_compas"/>
+                app:srcCompat="@drawable/ic_beat"/>
             <TextView
-                android:id="@+id/txtCompasActual_CardPistaMarcador"
+                android:id="@+id/txtBeatActual_CardPistaPulsos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/compas"
+                android:text="@string/pulsos"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/shape_round_rect"
+            android:gravity="center"
+            android:padding="3dp"
+            android:layout_marginStart="2dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:srcCompat="@drawable/ic_medida_compas" />
+            <TextView
+                android:id="@+id/txtMedidaCompasActual_CardPistaPulsos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/metrica_compas"
                 android:gravity="center"
                 />
         </LinearLayout>
@@ -74,23 +89,34 @@
             android:padding="4dp"
             android:layout_marginStart="2dp"/>
 
+        <ImageView
+            android:id="@+id/btnEscuchar_PistaMarcador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="@drawable/shape_circle"
+            android:layout_marginStart="2dp"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/ic_escuchar" />
+
     </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMarcadores_cardPistaMarcador"
+        android:id="@+id/recyclerViewPulsos_cardPistaMarcador"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCabecera_CardPistaMarcador" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCabecera_CardPistaPulsos" />
 
     <LinearLayout
-        android:id="@+id/linearLayoutAgregarMarcador_CardPistaMarcador"
+        android:id="@+id/linearLayoutAgregarPulso_CardPistaMarcador"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="10dp"
         android:weightSum="12"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewMarcadores_cardPistaMarcador">
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewPulsos_cardPistaMarcador">
 
         <TextView
             android:id="@+id/textView7"
@@ -98,10 +124,9 @@
             android:layout_height="match_parent"
             android:layout_weight="11"
             android:gravity="right|center_vertical"
-            android:text="@string/agregar_marcador" />
+            android:text="@string/agregar_pulso" />
 
         <ImageView
-            android:id="@+id/imageView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

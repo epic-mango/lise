@@ -8,7 +8,7 @@ public class Secuencia {
     //Usada por el fragmentSecuencia para notificar que se han hecho cambios
     public interface SecuenciaChangedListener {
         void onChange();
-        void onLongClicPista(int pistaPosition, int tipoPista );
+        void onLongClicPista(int pistaPosition, int tipoPista);
     }
 
     private String nombreSecuencia, artistaSecuencia;
@@ -24,7 +24,9 @@ public class Secuencia {
         return listaPistasMarcadores;
     }
 
-    public Secuencia(String nombreSecuencia, String artistaSecuencia, long idSecuencia, long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores, int tempoInicial) {
+    public Secuencia(String nombreSecuencia, String artistaSecuencia, long idSecuencia,
+                     long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores,
+                     int tempoInicial) {
         this.nombreSecuencia = nombreSecuencia;
         this.artistaSecuencia = artistaSecuencia;
         this.idSecuencia = idSecuencia;
