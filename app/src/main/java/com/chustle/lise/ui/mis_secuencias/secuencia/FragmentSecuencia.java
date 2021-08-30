@@ -243,66 +243,72 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
 
     @Override
     public void onLongClicPista(int pistaPosition, int tipoPista) {
-        android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(getContext());
-        alert.setTitle(getString(R.string.eliminar) + " " + listaPistas.get(pistaPosition).getTitulo());
-        alert.setMessage(getString(R.string.eliminar_preguntar));
-        alert.setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+        if (pistaPosition != 0) {
+
+            android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(getContext());
+            alert.setTitle(getString(R.string.eliminar) + " " + listaPistas.get(pistaPosition).getTitulo());
+            alert.setMessage(getString(R.string.eliminar_preguntar));
+            alert.setPositiveButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (tipoPista == CLASE_MARCADOR)
+                        secuencia.getListaPistasMarcadores().remove(listaPistas.get(pistaPosition));
+
+                    //TODO: Agregar los diferentes tipos de pistas para que se eliminen correctamente
+
+                    listaPistas.remove(pistaPosition);
+                    rVPistas.getAdapter().notifyItemRemoved(pistaPosition);
+
+                    onChange();
+
+                }
+            });
+
+            alert.setNegativeButton(getString(R.string.cancelar), null);
+
+            alert.setNeutralButton(getString((R.string.renombrar)), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    renombrar(pistaPosition, tipoPista);
+                }
+            });
+            alert.show();
+        } else renombrar(pistaPosition, tipoPista);
+    }
+
+    private void renombrar(int pistaPosition, int tipoPista) {
+
+
+        final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
+        listaDatos.add(new EntradaDato(
+                getString(R.string.nombre),
+                "",
+                getString(R.string.ejemplo_texto),
+                EntradaDato.TIPO_STRING
+        ));
+
+        DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (tipoPista == CLASE_MARCADOR)
-                    secuencia.getListaPistasMarcadores().remove(listaPistas.get(pistaPosition));
+            public void aceptar() {
 
-                //TODO: Agregar los diferentes tipos de pistas para que se eliminen correctamente
+                Pista pistaMarcadores = listaPistas.get(pistaPosition);
 
-                listaPistas.remove(pistaPosition);
-                rVPistas.getAdapter().notifyItemRemoved(pistaPosition);
+                String titulo = listaDatos.get(0).getDato();
+                pistaMarcadores.setTitulo(titulo);
+
+                int index = listaPistas.indexOf(pistaMarcadores);
+                if (tipoPista == CLASE_MARCADOR) {
+                    secuencia.getListaPistasMarcadores().get(secuencia.getListaPistasMarcadores().indexOf(pistaMarcadores)).setTitulo(titulo);
+                }
+
+                //TODO:Agregar los otros tipos de pistas
+
+                rVPistas.getAdapter().notifyItemChanged(index);
 
                 onChange();
-
             }
-        });
+        }, getString(R.string.renombrar), listaDatos);
 
-        alert.setNegativeButton(getString(R.string.cancelar), null);
-
-        alert.setNeutralButton(getString((R.string.renombrar)), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-                final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
-                listaDatos.add(new EntradaDato(
-                        getString(R.string.nombre),
-                        "",
-                        getString(R.string.ejemplo_texto),
-                        EntradaDato.TIPO_STRING
-                ));
-
-                DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
-                    @Override
-                    public void aceptar() {
-
-                        Pista pistaMarcadores = listaPistas.get(pistaPosition);
-
-                        String titulo = listaDatos.get(0).getDato();
-                        pistaMarcadores.setTitulo(titulo);
-
-                        int index = listaPistas.indexOf(pistaMarcadores);
-                        if (tipoPista == CLASE_MARCADOR) {
-                            secuencia.getListaPistasMarcadores().get(secuencia.getListaPistasMarcadores().indexOf(pistaMarcadores)).setTitulo(titulo);
-                        }
-
-                        //TODO:Agregar los otros tipos de pistas
-
-                        rVPistas.getAdapter().notifyItemChanged(index);
-
-                        onChange();
-                    }
-                }, getString(R.string.renombrar), listaDatos);
-
-                entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
-
-            }
-        });
-        alert.show();
+        entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }
 }
