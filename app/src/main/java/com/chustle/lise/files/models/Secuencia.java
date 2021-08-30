@@ -18,22 +18,20 @@ public class Secuencia {
     private ArrayList<PistaMarcadores> listaPistasMarcadores;
 
     //List of Tempos
-    private ArrayList<Tempo> listaTempos;
+    private PistaPulsos pistaPulsos;
 
     public ArrayList<PistaMarcadores> getListaPistasMarcadores() {
         return listaPistasMarcadores;
     }
 
     public Secuencia(String nombreSecuencia, String artistaSecuencia, long idSecuencia,
-                     long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores,
-                     int tempoInicial) {
+                     long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores, PistaPulsos pistaPulsos) {
         this.nombreSecuencia = nombreSecuencia;
         this.artistaSecuencia = artistaSecuencia;
         this.idSecuencia = idSecuencia;
         this.versionSecuencia = versionSecuencia;
         this.listaPistasMarcadores = listaPistasMarcadores;
-        this.listaTempos = new ArrayList<>();
-        this.listaTempos.add(new Tempo(1, tempoInicial, 4,4));
+        this.pistaPulsos = pistaPulsos;
     }
 
     public void setListaPistasMarcadores(ArrayList<PistaMarcadores> listaPistasMarcadores) {
@@ -53,9 +51,11 @@ public class Secuencia {
     //orders it as the user wanted and saved in the file
     public ArrayList<Pista> getListaPistas() {
         ArrayList<Pista> listaPistas = new ArrayList<>();
+        listaPistas.add(pistaPulsos);
 
         for (Pista p : listaPistasMarcadores)
             listaPistas.add(p);
+
 
 
         for (Pista p : listaPistas) {

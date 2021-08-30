@@ -15,6 +15,9 @@ public class Pista {
     public boolean isExpandido() {
         return expandido;
     }
+    public void setExpandido(boolean expandido){
+        this.expandido = expandido;
+    }
 
     public String getTitulo(){return titulo;}
     public void setTitulo(String titulo){this.titulo = titulo;}

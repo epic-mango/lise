@@ -64,5 +64,9 @@
     <string name="ejemplo_texto">Any text</string>
     <string name="metrica_compas">Time signature</string>
     <string name="agregar_pulso">Add Pulse</string>
+    <string name="editar_pulso">Pulse Edit</string>
+    <string name="cantidad_figuras">Beat count</string>
+    <string name="figura">Figure</string>
+    <string name="patron_metronomo">Metronome Pattern</string>
 
 </resources>

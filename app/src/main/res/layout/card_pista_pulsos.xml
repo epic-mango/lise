@@ -79,6 +79,17 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/btnEscuchar_PistaMarcador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_escuchar"
+            android:background="@drawable/shape_circle"
+            android:padding="4dp"
+            android:layout_marginStart="2dp"/>
+
+        <ImageView
             android:id="@+id/btnViajar_PistaMarcador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,22 +100,15 @@
             android:padding="4dp"
             android:layout_marginStart="2dp"/>
 
-        <ImageView
-            android:id="@+id/btnEscuchar_PistaMarcador"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="@drawable/shape_circle"
-            android:layout_marginStart="2dp"
-            android:padding="4dp"
-            android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/ic_escuchar" />
+
+
+
 
     </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPulsos_cardPistaMarcador"
+        android:id="@+id/recyclerViewPulsos_cardPistaPulsos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCabecera_CardPistaPulsos" />
@@ -116,7 +120,7 @@
         android:orientation="horizontal"
         android:padding="10dp"
         android:weightSum="12"
-        app:layout_constraintTop_toBottomOf="@id/recyclerViewPulsos_cardPistaMarcador">
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewPulsos_cardPistaPulsos">
 
         <TextView
             android:id="@+id/textView7"

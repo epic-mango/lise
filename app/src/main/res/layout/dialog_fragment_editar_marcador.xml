@@ -104,7 +104,7 @@
                 android:text="@string/compas_inicio" />
 
             <EditText
-                android:id="@+id/txtCompasInicio_DialogFragmentAgregarMarcador"
+                android:id="@+id/txtCompasInicio_DialogFragmentEditarPulso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

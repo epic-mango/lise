@@ -11,8 +11,10 @@ import com.chustle.lise.R;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.Pista;
 import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.PistaPulsos;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.mis_secuencias.secuencia.marcadores.ViewHolderPistaMarcadores;
+import com.chustle.lise.ui.mis_secuencias.secuencia.pulso.ViewHolderPistaPulsos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class AdapterListaPistas extends RecyclerView.Adapter<ViewHolderPista> {
 
     //Static Object class identifiers
     public static final int CLASE_MARCADOR = 0;
+    public static final int CLASE_PULSOS = 1;
 
     //List of information for the Adapter
     private List<Pista> listaPistas;
@@ -48,6 +51,10 @@ public class AdapterListaPistas extends RecyclerView.Adapter<ViewHolderPista> {
                 return new ViewHolderPistaMarcadores(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.card_pista_marcador, parent,
                         false), supportFragmentManager, listener);
+            case CLASE_PULSOS:
+                return new ViewHolderPistaPulsos(LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.card_pista_pulsos, parent,
+                                false), supportFragmentManager, listener);
             default:
                 return null;
 
@@ -66,6 +73,8 @@ public class AdapterListaPistas extends RecyclerView.Adapter<ViewHolderPista> {
         //returning the class int identifiers
         if (claseActual.equals(PistaMarcadores.class.getName()))
             tipo = CLASE_MARCADOR;
+        else if (claseActual.equals(PistaPulsos.class.getName()))
+            tipo = CLASE_PULSOS;
 
         return tipo;
     }
@@ -73,11 +82,12 @@ public class AdapterListaPistas extends RecyclerView.Adapter<ViewHolderPista> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolderPista holder, int position) {
 
-
-
         switch (getItemViewType(position)) {
             case CLASE_MARCADOR:
                 ((ViewHolderPistaMarcadores) holder).setInfoPistaMarcadores((PistaMarcadores) listaPistas.get(position));
+                break;
+            case CLASE_PULSOS:
+                ((ViewHolderPistaPulsos) holder).setInfoPistaPulsos((PistaPulsos) listaPistas.get(position));
                 break;
         }
     }

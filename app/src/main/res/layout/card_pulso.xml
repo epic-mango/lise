@@ -13,35 +13,44 @@
         android:paddingHorizontal="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:weightSum="2">
+        android:weightSum="4">
 
 
 
-        <ImageView
-            android:id="@+id/imgTipo_cardMarcador"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:minWidth="10dp"
-            android:maxWidth="10dp"
-            android:layout_weight="0"
-            android:paddingEnd="2dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_compas" />
+
 
         <TextView
-            android:id="@+id/lblCompasInicio_CardMarcador"
+            android:id="@+id/lblCompasInicio_CardPulso"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:paddingEnd="10dp"
             android:text="0"/>
 
         <TextView
-            android:id="@+id/lblNombreMarcador_cardMarcador"
+            android:id="@+id/lblMetricaPulso_cardPulso"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:paddingEnd="10dp"
-            android:text="Nombre"/>
+            android:text="4/4"/>
+
+
+        <TextView
+            android:id="@+id/lblPulso_cardPulso"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingEnd="10dp"
+            android:text="120 BMP"/>
+
+
+        <TextView
+            android:id="@+id/lblPatron_cardPulso"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingEnd="10dp"
+            android:text="1234"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

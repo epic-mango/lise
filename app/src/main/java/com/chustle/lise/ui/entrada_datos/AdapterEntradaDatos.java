@@ -41,18 +41,19 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
         });
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull final EntradaDatosViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final EntradaDatosViewHolder holder, int position) {
         holder.lblNombreDato.setText(listaDatos.get(position).campo);
         holder.txtEntradaDato.setHint(listaDatos.get(position).ejemplo);
         holder.txtEntradaDato.setText(listaDatos.get(position).dato);
 
-        switch (listaDatos.get(position).getTipo()) {
+        switch (listaDatos.get(holder.getAdapterPosition()).getTipo()) {
             case EntradaDato.TIPO_NUMERO:
                 holder.txtEntradaDato.setInputType(InputType.TYPE_CLASS_NUMBER);
                 break;
             case EntradaDato.TIPO_STRING:
-                holder.txtEntradaDato.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                holder.txtEntradaDato.setInputType(InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE);
                 break;
         }
 
@@ -67,7 +68,7 @@ public class AdapterEntradaDatos extends RecyclerView.Adapter<AdapterEntradaDato
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                holder.listener.setEntradaDato(position, holder.txtEntradaDato.getText().toString());
+                holder.listener.setEntradaDato(holder.getAdapterPosition(), holder.txtEntradaDato.getText().toString());
             }
 
             @Override

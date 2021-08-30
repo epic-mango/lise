@@ -16,13 +16,6 @@ public class PistaMarcadores extends Pista {
         this.listaMarcadores = listaMarcadores;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setExpandido(boolean expandido){
-        super.expandido = expandido;
-    }
 
     public ArrayList<Marcador> getListaMarcadores() {
         return listaMarcadores;

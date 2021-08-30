@@ -178,7 +178,7 @@ public class DialogFragmentEditarMarcador extends DialogFragment {
 
         //-------------Compas inicializar-----------------------------------------------------------
         //-------------Tiempo inicializar-----------------------------------------------------------
-        txtCompasInicio = root.findViewById(R.id.txtCompasInicio_DialogFragmentAgregarMarcador);
+        txtCompasInicio = root.findViewById(R.id.txtCompasInicio_DialogFragmentEditarPulso);
 
         if (marcador != null) {
             //When editing:

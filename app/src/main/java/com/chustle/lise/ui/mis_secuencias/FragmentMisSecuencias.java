@@ -17,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chustle.lise.R;
 import com.chustle.lise.files.FileSecuencia;
+import com.chustle.lise.files.models.Beat;
 import com.chustle.lise.files.models.PistaMarcadores;
+import com.chustle.lise.files.models.PistaPulsos;
+import com.chustle.lise.files.models.Pulso;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.entrada_datos.DialogFragmentEntradaDatos;
 import com.chustle.lise.ui.entrada_datos.EntradaDato;
@@ -107,13 +110,23 @@ public class FragmentMisSecuencias extends Fragment {
                     @Override
                     public void aceptar() {
 
+                        ArrayList<Beat> patron = new ArrayList<>();
+                        patron.add(new Beat('1',0));
+                        patron.add(new Beat('2',1));
+                        patron.add(new Beat('3',1));
+                        patron.add(new Beat('4',1));
+
+                        ArrayList<Pulso> listaPulsos = new ArrayList<>();
+                        listaPulsos.add(new Pulso(1,4,4,Integer.parseInt(listaDatos.get(2).getDato()),patron));
+
+                        PistaPulsos pistaPulsos = new PistaPulsos(0,false,getString(R.string.pulsos),listaPulsos);
+
                         //Create a file on the device with the information from the dialog fragment
                         Secuencia secuencia = new Secuencia(listaDatos.get(0).getDato(),
                                 listaDatos.get(1).getDato(),
                                 Calendar.getInstance().getTimeInMillis(),
                                 Calendar.getInstance().getTimeInMillis(),
-                                new ArrayList<PistaMarcadores>(),
-                                Integer.parseInt(listaDatos.get(2).getDato()));
+                                new ArrayList<PistaMarcadores>(), pistaPulsos);
 
 
                         files.guardarSecuencia(secuencia);
