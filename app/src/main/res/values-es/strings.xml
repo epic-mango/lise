@@ -65,4 +65,7 @@
     <string name="metrica_compas">Métrica de tiempo</string>
     <string name="agregar_pulso">Añadir Pulso</string>
     <string name="editar_pulso">Editar Pulso</string>
+    <string name="cantidad_figuras">Cantidad de figuras</string>
+    <string name="figura">Figura</string>
+    <string name="patron_metronomo">Patrón del metrónomo</string>
 </resources>
