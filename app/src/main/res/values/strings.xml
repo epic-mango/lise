@@ -30,7 +30,7 @@
     <string name="marcadores">Bookmarks</string>
     <string name="editar_marcador">Edit Bookmark</string>
     <string name="pulsos">Pulses</string>
-    <string name="anotaciones">Annotations</string>
+    <string name="anotaciones">Notes</string>
     <string name="audio">Audio</string>
     <string name="nombre_del_marcador">Bookmark name</string>
     <string name="nueva_pista_marcadores">New bookmarks track</string>
@@ -68,5 +68,13 @@
     <string name="cantidad_figuras">Beat count</string>
     <string name="figura">Figure</string>
     <string name="patron_metronomo">Metronome Pattern</string>
+    <string name="ejemplo_anotacion">Example:\n    A multiline text</string>
+    <string name="anotacion">Note</string>
+    <string name="restante">Remaining</string>
+    <string name="agregar_anotacion">Add note</string>
+    <string name="editar_anotacion">Edit note</string>
+    <string name="nueva_pista_anotaciones">New notes track</string>
+    <string name="error_anotacion_vacia">Note can\'t be empty</string>
+    <string name="eliminar_anotacion">Delete note?</string>
 
 </resources>

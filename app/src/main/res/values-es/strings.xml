@@ -68,4 +68,12 @@
     <string name="cantidad_figuras">Cantidad de figuras</string>
     <string name="figura">Figura</string>
     <string name="patron_metronomo">Patrón del metrónomo</string>
+    <string name="ejemplo_anotacion">Ejemplo:\n    Un texto multilinea</string>
+    <string name="anotacion">Anotación</string>
+    <string name="restante">Restante</string>
+    <string name="agregar_anotacion">Agregar anotación</string>
+    <string name="editar_anotacion">Editar anotación</string>
+    <string name="nueva_pista_anotaciones">Nueva pista de anotaciones</string>
+    <string name="error_anotacion_vacia">La anotación no puede estar vacía</string>
+    <string name="eliminar_anotacion">¿Eliminar anotación?</string>
 </resources>

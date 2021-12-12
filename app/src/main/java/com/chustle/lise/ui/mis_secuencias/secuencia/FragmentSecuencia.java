@@ -25,6 +25,7 @@ import com.chustle.lise.R;
 import com.chustle.lise.files.FileSecuencia;
 import com.chustle.lise.files.models.Marcador;
 import com.chustle.lise.files.models.Pista;
+import com.chustle.lise.files.models.PistaAnotaciones;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.Secuencia;
 import com.chustle.lise.ui.entrada_datos.DialogFragmentEntradaDatos;
@@ -197,7 +198,10 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                agregarPistaMarcadores();
+                                agregarPista(PistaMarcadores.class.getName());
+                                break;
+                            case 1:
+                                agregarPista(PistaAnotaciones.class.getName());
                                 break;
                         }
                     }
@@ -206,7 +210,7 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
         agregarPista.show();
     }
 
-    private void agregarPistaMarcadores() {
+    private void agregarPista(String clase) {
 
         final ArrayList<EntradaDato> listaDatos = new ArrayList<>();
         listaDatos.add(new EntradaDato(
@@ -216,20 +220,36 @@ public class FragmentSecuencia extends Fragment implements Secuencia.SecuenciaCh
                 EntradaDato.TIPO_STRING
         ));
 
+        String tituloDatos = "";
+        if (clase.equals(PistaMarcadores.class.getName())) {
+            tituloDatos = getString(R.string.nueva_pista_marcadores);
+        } else if (clase.equals(PistaAnotaciones.class.getName()))
+            tituloDatos = getString(R.string.nueva_pista_anotaciones);
+
+
         DialogFragmentEntradaDatos entradaDatos = new DialogFragmentEntradaDatos(new DialogFragmentEntradaDatos.EntradaDatosListener() {
             @Override
             public void aceptar() {
 
-                PistaMarcadores pistaMarcadores = new PistaMarcadores(listaPistas.size(), true, listaDatos.get(0).getDato(), new ArrayList<Marcador>());
+                Pista pistaNueva = null;
+                if (clase.equals(PistaMarcadores.class.getName())) {
+                    pistaNueva = new PistaMarcadores(listaPistas.size(), true, listaDatos.get(0).getDato(), new ArrayList<Marcador>());
+                    secuencia.getListaPistasMarcadores().add((PistaMarcadores) pistaNueva);
+                } else if (clase.equals(PistaAnotaciones.class.getName())) {
+                    pistaNueva = new PistaAnotaciones(listaPistas.size(), true, listaDatos.get(0).getDato(), new ArrayList<Marcador>());
+                    secuencia.getListaPistasAnotaciones().add((PistaAnotaciones) pistaNueva);
+                }
 
-                listaPistas.add(pistaMarcadores);
-                secuencia.getListaPistasMarcadores().add(pistaMarcadores);
-                int index = listaPistas.indexOf(pistaMarcadores);
-                rVPistas.getAdapter().notifyItemInserted(index);
+                if (pistaNueva != null) {
+                    listaPistas.add(pistaNueva);
 
-                onChange();
+                    int index = listaPistas.indexOf(pistaNueva);
+                    rVPistas.getAdapter().notifyItemInserted(index);
+
+                    onChange();
+                }
             }
-        }, getString(R.string.nueva_pista_marcadores), listaDatos);
+        }, tituloDatos, listaDatos);
 
         entradaDatos.show(getActivity().getSupportFragmentManager(), "Nombre_marcador");
     }

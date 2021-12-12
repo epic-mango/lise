@@ -20,17 +20,25 @@ public class Secuencia {
     //List of Tempos
     private PistaPulsos pistaPulsos;
 
+    //List of annotations
+    private ArrayList<PistaAnotaciones> listaPistasAnotaciones;
+
+    public ArrayList<PistaAnotaciones> getListaPistasAnotaciones() {
+        return listaPistasAnotaciones;
+    }
+
     public ArrayList<PistaMarcadores> getListaPistasMarcadores() {
         return listaPistasMarcadores;
     }
 
     public Secuencia(String nombreSecuencia, String artistaSecuencia, long idSecuencia,
-                     long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores, PistaPulsos pistaPulsos) {
+                     long versionSecuencia, ArrayList<PistaMarcadores> listaPistasMarcadores,ArrayList<PistaAnotaciones> listaPistaAnotaciones, PistaPulsos pistaPulsos) {
         this.nombreSecuencia = nombreSecuencia;
         this.artistaSecuencia = artistaSecuencia;
         this.idSecuencia = idSecuencia;
         this.versionSecuencia = versionSecuencia;
         this.listaPistasMarcadores = listaPistasMarcadores;
+        this.listaPistasAnotaciones = listaPistaAnotaciones;
         this.pistaPulsos = pistaPulsos;
     }
 
@@ -56,6 +64,8 @@ public class Secuencia {
         for (Pista p : listaPistasMarcadores)
             listaPistas.add(p);
 
+        for (Pista p : listaPistasAnotaciones)
+            listaPistas.add(p);
 
 
         for (Pista p : listaPistas) {

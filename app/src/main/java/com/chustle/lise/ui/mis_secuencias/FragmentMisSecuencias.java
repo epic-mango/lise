@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chustle.lise.R;
 import com.chustle.lise.files.FileSecuencia;
 import com.chustle.lise.files.models.Beat;
+import com.chustle.lise.files.models.PistaAnotaciones;
 import com.chustle.lise.files.models.PistaMarcadores;
 import com.chustle.lise.files.models.PistaPulsos;
 import com.chustle.lise.files.models.Pulso;
@@ -126,7 +127,7 @@ public class FragmentMisSecuencias extends Fragment {
                                 listaDatos.get(1).getDato(),
                                 Calendar.getInstance().getTimeInMillis(),
                                 Calendar.getInstance().getTimeInMillis(),
-                                new ArrayList<PistaMarcadores>(), pistaPulsos);
+                                new ArrayList<PistaMarcadores>(), new ArrayList<PistaAnotaciones>(),pistaPulsos);
 
 
                         files.guardarSecuencia(secuencia);
